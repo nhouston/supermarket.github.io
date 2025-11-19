@@ -1,12 +1,12 @@
-name: Scraper
+name: Scraper & Learner
 
 on:
   schedule:
-    - cron: '0 8 * * *' # Daily Sweep
+    - cron: '0 8 * * *' # Runs daily at 8am UTC
   workflow_dispatch:
     inputs:
-      specific_item:
-        description: 'Specific item to scrape immediately'
+      item_to_add:
+        description: 'New item to memorize (e.g. Saffron)'
         required: false
         default: ''
 
@@ -14,26 +14,28 @@ permissions:
   contents: write
 
 jobs:
-  scrape:
+  scrape-and-learn:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+          
       - run: npm install
       
-      # We pass the input to the script as an Environment Variable
       - name: Run Scraper
         env:
-          SPECIFIC_ITEM: ${{ github.event.inputs.specific_item }}
+          NEW_ITEM: ${{ github.event.inputs.item_to_add }}
         run: node scraper.js
 
-      - name: Commit Data
+      - name: Commit Memory & Prices
         run: |
-          git config --global user.name 'PriceBot'
+          git config --global user.name 'ShoppingBot'
           git config --global user.email 'bot@noreply.com'
-          git pull # Pull latest changes to avoid conflicts
-          git add prices.json
-          git commit -m "Update prices" || exit 0
+          git pull
+          # We add BOTH files. If wishlist changed, we save it. If prices changed, we save them.
+          git add wishlist.json prices.json
+          git commit -m "Update prices and wishlist [skip ci]" || exit 0
           git push
