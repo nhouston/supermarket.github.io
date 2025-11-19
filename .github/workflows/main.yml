@@ -1,9 +1,14 @@
-name: Daily Price Scrape
+name: Scraper
 
 on:
   schedule:
-    - cron: '0 8 * * *' # Runs everyday at 8am
-  workflow_dispatch: # Allows manual run button
+    - cron: '0 8 * * *' # Daily Sweep
+  workflow_dispatch:
+    inputs:
+      specific_item:
+        description: 'Specific item to scrape immediately'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -17,11 +22,18 @@ jobs:
         with:
           node-version: '18'
       - run: npm install
-      - run: node scraper.js
+      
+      # We pass the input to the script as an Environment Variable
+      - name: Run Scraper
+        env:
+          SPECIFIC_ITEM: ${{ github.event.inputs.specific_item }}
+        run: node scraper.js
+
       - name: Commit Data
         run: |
           git config --global user.name 'PriceBot'
           git config --global user.email 'bot@noreply.com'
+          git pull # Pull latest changes to avoid conflicts
           git add prices.json
           git commit -m "Update prices" || exit 0
           git push
