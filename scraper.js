@@ -21,6 +21,7 @@ if (newItem && newItem.trim() !== "") {
 
 function parsePrice(priceStr) {
     if (!priceStr) return null;
+    // Clean text like "£1.50", "now £1.00", "80p"
     let clean = priceStr.toLowerCase().replace(/[^\d.p]/g, '');
     if (clean.includes('p')) { return parseFloat(clean.replace('p', '')) / 100; }
     return parseFloat(clean);
@@ -35,49 +36,51 @@ async function scrapeSupermarkets() {
             '--no-sandbox', 
             '--disable-setuid-sandbox', 
             '--window-size=1920,1080',
-            '--disable-blink-features=AutomationControlled',
-            '--disable-features=IsolateOrigins,site-per-process'
+            '--disable-blink-features=AutomationControlled'
         ]
     });
 
     const page = await browser.newPage();
     
-    // STEALTH: Pass as a real browser
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-    
+    // NEW STEALTH USER AGENT (To fix Sainsbury's soft block)
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36');
+
     const allData = { 'Sainsburys': {}, 'Tesco': {}, 'Asda': {}, 'Aldi': {}, 'Morrisons': {} };
 
-    // --- CONFIGURATION ---
-    // selector: The CSS class for the price
-    // cookieBtn: The selector for the "Accept Cookies" button (to clear the screen)
-    
+    // --- STORE 1: SAINSBURYS ---
+    // Attempt to accept cookies if they appear
     await updateStore(page, allData['Sainsburys'], 'Sainsburys', 
         'https://www.sainsburys.co.uk/groceries/search?searchTerm=', 
-        ['[data-test-id="pt-retail-price"]', '.pt__cost'],
-        '#onetrust-accept-btn-handler' // Cookie button
-    );
-
-    await updateStore(page, allData['Tesco'], 'Tesco', 
-        'https://www.tesco.com/groceries/en-GB/search?query=', 
-        ['.price-per-sellable-unit .value', '[data-auto="price-value"]'],
-        'button[title="Accept all cookies"]'
-    );
-
-    await updateStore(page, allData['Asda'], 'Asda', 
-        'https://groceries.asda.com/search/', 
-        ['.co-product-list__main-cntr .co-item__price', 'strong.co-product-list__price'],
+        ['[data-test-id="pt-retail-price"]', '.pt__cost', '.pricePerUnit'],
         '#onetrust-accept-btn-handler'
     );
 
+    // --- STORE 2: TESCO (Fixing the Cookie Block) ---
+    await updateStore(page, allData['Tesco'], 'Tesco', 
+        'https://www.tesco.com/groceries/en-GB/search?query=', 
+        ['.price-per-sellable-unit .value', '[data-auto="price-value"]', '.beans-price__text'],
+        null, // We handle Tesco cookies manually with a text search below
+        true  // Enable Tesco special logic
+    );
+
+    // --- STORE 3: ASDA (Fixing selectors for when it loads) ---
+    await updateStore(page, allData['Asda'], 'Asda', 
+        'https://groceries.asda.com/search/', 
+        ['.co-product-list__main-cntr .co-item__price', '.price', '.co-product-list__price'],
+        '#onetrust-accept-btn-handler'
+    );
+
+    // --- STORE 4: ALDI (Fixing selectors) ---
     await updateStore(page, allData['Aldi'], 'Aldi', 
         'https://www.aldi.co.uk/results?q=', 
-        ['.product-tile-price .h4', '.product-tile-price', '.text-primary'],
+        ['.product-tile-price .h4', '.product-price span', '.text-primary'],
         '#onetrust-accept-btn-handler'
     );
     
+    // --- STORE 5: MORRISONS (Fixing selectors) ---
     await updateStore(page, allData['Morrisons'], 'Morrisons', 
         'https://groceries.morrisons.com/search?q=', 
-        ['.fops-price', '.bop-price__current'],
+        ['.fops-price', '.price-group', 'span.fop-price'],
         '#onetrust-accept-btn-handler'
     );
 
@@ -88,37 +91,36 @@ async function scrapeSupermarkets() {
     console.log('✅ Scrape complete.');
 }
 
-async function updateStore(page, storeInventory, storeName, baseUrl, selectors, cookieBtnSelector) {
-    let cookieClicked = false;
+async function updateStore(page, storeInventory, storeName, baseUrl, selectors, cookieSelector, isTesco = false) {
+    let cookieHandled = false;
 
     for (const item of wishlist) {
         try {
             const url = `${baseUrl}${encodeURIComponent(item)}`;
-            // Increased timeout to 45s for slow loads
-            await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 });
+            await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
             
-            // 1. TRY TO SMASH COOKIE BANNER (Once per store)
-            if (!cookieClicked && cookieBtnSelector) {
+            // --- SPECIAL COOKIE HANDLING ---
+            if (!cookieHandled) {
                 try {
-                    const btn = await page.waitForSelector(cookieBtnSelector, { timeout: 2000 });
-                    if (btn) {
-                        await btn.click();
-                        await new Promise(r => setTimeout(r, 1000)); // Wait for banner to disappear
-                        cookieClicked = true;
+                    if (isTesco) {
+                        // TESCO SPECIFIC: Find button by text "Accept all"
+                        await page.evaluate(() => {
+                            const buttons = Array.from(document.querySelectorAll('button'));
+                            const acceptBtn = buttons.find(b => b.textContent.includes('Accept all'));
+                            if (acceptBtn) acceptBtn.click();
+                        });
+                    } else if (cookieSelector) {
+                        // STANDARD: Click by ID
+                        await page.waitForSelector(cookieSelector, { timeout: 2000 });
+                        await page.click(cookieSelector);
                     }
+                    await new Promise(r => setTimeout(r, 2000)); // Wait for overlay to vanish
+                    cookieHandled = true;
                 } catch(e) {}
             }
 
-            // 2. CHECK PAGE TITLE (Debug: Are we blocked?)
-            const title = await page.title();
-            if (title.includes("Access Denied") || title.includes("Robot")) {
-                console.log(`   [${storeName}] ⛔ BLOCKED. (IP banned by store)`);
-                continue; 
-            }
-
+            // --- PRICE EXTRACTION ---
             let foundPrice = null;
-
-            // 3. FIND PRICE
             for (const sel of selectors) {
                 try {
                     const el = await page.waitForSelector(sel, { timeout: 1500 });
@@ -137,12 +139,8 @@ async function updateStore(page, storeInventory, storeName, baseUrl, selectors, 
                 storeInventory[item] = foundPrice;
                 console.log(`   [${storeName}] ${item}: £${foundPrice}`);
             } else {
-                console.log(`   [${storeName}] ${item}: Not found. Saving screenshot...`);
-                // 4. TAKE DEBUG SCREENSHOT
-                // This will create a file like "debug-Tesco-Milk.png" so you can see what happened
-                try {
-                    await page.screenshot({ path: `debug-${storeName}-${item.replace(/\s/g,'')}.png` });
-                } catch(e) {}
+                console.log(`   [${storeName}] ${item}: Not found. (Saving screenshot)`);
+                try { await page.screenshot({ path: `debug-${storeName}-${item.replace(/\s/g,'')}.png` }); } catch(e) {}
             }
 
         } catch (error) {
