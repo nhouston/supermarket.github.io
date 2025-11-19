@@ -1,10 +1,53 @@
 {
-  "lastUpdated": "11/19/2025, 7:41:07 PM",
+  "lastUpdated": "11/19/2025, 8:10:46 PM",
   "prices": {
     "Sainsburys": {},
-    "Tesco": {},
-    "Asda": {},
-    "Aldi": {},
-    "Morrisons": {}
+    "Tesco": {
+      "Milk": 3.75,
+      "Eggs": 2.8,
+      "Bananas": 0.16,
+      "Rice": 11,
+      "Pasta": 2,
+      "Chicken Breast": 4.65,
+      "Potatoes": 3.7,
+      "Cheese": 15,
+      "Apples": 2.95
+    },
+    "Asda": {
+      "Milk": 1.65,
+      "Bread": 0.023799999999999998,
+      "Eggs": 2.8,
+      "Bananas": 3.75,
+      "Rice": 0.0398,
+      "Pasta": 0.059800000000000006,
+      "Chicken Breast": 0.06309999999999999,
+      "Potatoes": 1.47,
+      "Cheese": 3.58,
+      "Apples": 3.75
+    },
+    "Aldi": {
+      "Milk": 0.99,
+      "Bread": 0.55,
+      "Eggs": 2.25,
+      "Bananas": 0.78,
+      "Rice": 0.75,
+      "Pasta": 0.41,
+      "Chicken Breast": 4.25,
+      "Potatoes": 1.19,
+      "Cheese": 3.19,
+      "Apples": 2.09
+    },
+    "Morrisons": {
+      "Milk": 2,
+      "Bread": 1.39,
+      "Eggs": 3.45,
+      "Bananas": 3.8,
+      "Rice": 6,
+      "Pasta": 0.75,
+      "Chicken Breast": 4.3,
+      "Potatoes": 1.95,
+      "Cheese": 3.8,
+      "Apples": 4
+    }
   }
 }
