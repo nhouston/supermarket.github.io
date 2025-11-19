@@ -2,11 +2,11 @@ name: Scraper & Learner
 
 on:
   schedule:
-    - cron: '0 8 * * *' # Runs daily at 8am UTC
+    - cron: '0 8 * * *'
   workflow_dispatch:
     inputs:
       item_to_add:
-        description: 'New item to memorize (e.g. Saffron)'
+        description: 'New item'
         required: false
         default: ''
 
@@ -18,7 +18,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -30,12 +29,20 @@ jobs:
           NEW_ITEM: ${{ github.event.inputs.item_to_add }}
         run: node scraper.js
 
+      # --- THIS SAVES THE SCREENSHOTS ---
+      - name: Upload Debug Screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-screenshots
+          path: '*.png'
+          retention-days: 5
+
       - name: Commit Memory & Prices
         run: |
           git config --global user.name 'ShoppingBot'
           git config --global user.email 'bot@noreply.com'
           git pull
-          # We add BOTH files. If wishlist changed, we save it. If prices changed, we save them.
           git add wishlist.json prices.json
-          git commit -m "Update prices and wishlist [skip ci]" || exit 0
+          git commit -m "Update prices [skip ci]" || exit 0
           git push
