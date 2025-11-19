@@ -6,7 +6,7 @@ let wishlist = [];
 try {
     wishlist = JSON.parse(fs.readFileSync('wishlist.json', 'utf8'));
 } catch (e) {
-    wishlist = ['Milk', 'Bread']; 
+    wishlist = ['Milk', 'Bread'];
 }
 
 // 2. CHECK FOR NEW ITEMS
@@ -21,66 +21,75 @@ if (newItem && newItem.trim() !== "") {
 
 function parsePrice(priceStr) {
     if (!priceStr) return null;
-    // Clean text like "£1.50", "now £1.00", "80p"
     let clean = priceStr.toLowerCase().replace(/[^\d.p]/g, '');
     if (clean.includes('p')) { return parseFloat(clean.replace('p', '')) / 100; }
     return parseFloat(clean);
 }
 
+// --- NEW: HUMAN BEHAVIOR SIMULATOR ---
+async function wiggleMouse(page) {
+    try {
+        await page.mouse.move(100, 100);
+        await page.mouse.move(200, 200, { steps: 10 });
+        await page.mouse.move(150, 300, { steps: 10 });
+        await new Promise(r => setTimeout(r, 500));
+    } catch (e) {}
+}
+
 async function scrapeSupermarkets() {
     console.log(`🛒 Scraping ${wishlist.length} items...`);
-    
+
     const browser = await puppeteer.launch({
-        headless: "new",
+        headless: "new", // Ensure this is "new" for best compatibility
         args: [
-            '--no-sandbox', 
-            '--disable-setuid-sandbox', 
-            '--window-size=1920,1080',
-            '--disable-blink-features=AutomationControlled'
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--window-size=1366,768', // Standard laptop size
+            '--disable-blink-features=AutomationControlled' // Mask webdriver
         ]
     });
 
     const page = await browser.newPage();
-    
-    // NEW STEALTH USER AGENT (To fix Sainsbury's soft block)
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36');
 
+    // STEALTH: Use a very standard Windows Chrome User Agent
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    
     const allData = { 'Sainsburys': {}, 'Tesco': {}, 'Asda': {}, 'Aldi': {}, 'Morrisons': {} };
 
-    // --- STORE 1: SAINSBURYS ---
-    // Attempt to accept cookies if they appear
-    await updateStore(page, allData['Sainsburys'], 'Sainsburys', 
-        'https://www.sainsburys.co.uk/groceries/search?searchTerm=', 
-        ['[data-test-id="pt-retail-price"]', '.pt__cost', '.pricePerUnit'],
-        '#onetrust-accept-btn-handler'
-    );
-
-    // --- STORE 2: TESCO (Fixing the Cookie Block) ---
-    await updateStore(page, allData['Tesco'], 'Tesco', 
-        'https://www.tesco.com/groceries/en-GB/search?query=', 
-        ['.price-per-sellable-unit .value', '[data-auto="price-value"]', '.beans-price__text'],
-        null, // We handle Tesco cookies manually with a text search below
-        true  // Enable Tesco special logic
-    );
-
-    // --- STORE 3: ASDA (Fixing selectors for when it loads) ---
-    await updateStore(page, allData['Asda'], 'Asda', 
-        'https://groceries.asda.com/search/', 
-        ['.co-product-list__main-cntr .co-item__price', '.price', '.co-product-list__price'],
-        '#onetrust-accept-btn-handler'
-    );
-
-    // --- STORE 4: ALDI (Fixing selectors) ---
-    await updateStore(page, allData['Aldi'], 'Aldi', 
-        'https://www.aldi.co.uk/results?q=', 
-        ['.product-tile-price .h4', '.product-price span', '.text-primary'],
-        '#onetrust-accept-btn-handler'
-    );
+    // --- CONFIGURATIONS ---
     
-    // --- STORE 5: MORRISONS (Fixing selectors) ---
-    await updateStore(page, allData['Morrisons'], 'Morrisons', 
-        'https://groceries.morrisons.com/search?q=', 
-        ['.fops-price', '.price-group', 'span.fop-price'],
+    // SAINSBURYS: Added "wiggle" to pass the soft block
+    await updateStore(page, allData['Sainsburys'], 'Sainsburys',
+        'https://www.sainsburys.co.uk/groceries/search?searchTerm=',
+        ['[data-test-id="pt-retail-price"]', '.pt__cost', '.price-per-unit'],
+        '#onetrust-accept-btn-handler'
+    );
+
+    // TESCO: Special text matcher for "Accept all"
+    await updateStore(page, allData['Tesco'], 'Tesco',
+        'https://www.tesco.com/groceries/en-GB/search?query=',
+        ['.price-per-sellable-unit .value', '[data-auto="price-value"]', '.beans-price__text'],
+        null, true // Enable Tesco special mode
+    );
+
+    // ASDA: Added wiggle to try and pass Cloudflare
+    await updateStore(page, allData['Asda'], 'Asda',
+        'https://groceries.asda.com/search/',
+        ['.co-product-list__main-cntr .co-item__price', '.price', 'strong.co-product-list__price'],
+        '#onetrust-accept-btn-handler'
+    );
+
+    // ALDI: Added popup closer for "Store Selection"
+    await updateStore(page, allData['Aldi'], 'Aldi',
+        'https://www.aldi.co.uk/results?q=',
+        ['.product-tile-price .h4', '.product-price span', '.text-primary'],
+        '#onetrust-accept-btn-handler', false, true // Enable Aldi special mode
+    );
+
+    // MORRISONS: Updated selectors
+    await updateStore(page, allData['Morrisons'], 'Morrisons',
+        'https://groceries.morrisons.com/search?q=',
+        ['.fops-price', '.bop-price__current', 'span.fop-price', '.price-group'],
         '#onetrust-accept-btn-handler'
     );
 
@@ -91,45 +100,53 @@ async function scrapeSupermarkets() {
     console.log('✅ Scrape complete.');
 }
 
-async function updateStore(page, storeInventory, storeName, baseUrl, selectors, cookieSelector, isTesco = false) {
+async function updateStore(page, storeInventory, storeName, baseUrl, selectors, cookieSelector, isTesco = false, isAldi = false) {
     let cookieHandled = false;
 
     for (const item of wishlist) {
         try {
             const url = `${baseUrl}${encodeURIComponent(item)}`;
-            await page.goto(url, { waitUntil: 'networkidle2', timeout: 30000 });
             
-            // --- SPECIAL COOKIE HANDLING ---
+            // Slower navigation to look human
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+            await wiggleMouse(page); // Move mouse to prove we are human
+            await new Promise(r => setTimeout(r, 2000));
+
+            // --- POPUP KILLER LOGIC ---
             if (!cookieHandled) {
                 try {
                     if (isTesco) {
-                        // TESCO SPECIFIC: Find button by text "Accept all"
+                        // Tesco: Click "Accept all" button specifically
                         await page.evaluate(() => {
                             const buttons = Array.from(document.querySelectorAll('button'));
-                            const acceptBtn = buttons.find(b => b.textContent.includes('Accept all'));
-                            if (acceptBtn) acceptBtn.click();
+                            const accept = buttons.find(b => b.innerText.includes('Accept all'));
+                            if (accept) accept.click();
                         });
+                    } else if (isAldi) {
+                        // Aldi: Close "Store Selection" popup (X button or close)
+                        try { await page.click('.close-modal'); } catch(e) {}
+                        try { await page.click('button[aria-label="Close"]'); } catch(e) {}
+                        try { await page.click('#onetrust-accept-btn-handler'); } catch(e) {}
                     } else if (cookieSelector) {
-                        // STANDARD: Click by ID
                         await page.waitForSelector(cookieSelector, { timeout: 2000 });
                         await page.click(cookieSelector);
                     }
-                    await new Promise(r => setTimeout(r, 2000)); // Wait for overlay to vanish
+                    await new Promise(r => setTimeout(r, 1000));
                     cookieHandled = true;
-                } catch(e) {}
+                } catch (e) {}
             }
 
-            // --- PRICE EXTRACTION ---
+            // --- PRICE FINDER ---
             let foundPrice = null;
             for (const sel of selectors) {
                 try {
-                    const el = await page.waitForSelector(sel, { timeout: 1500 });
+                    const el = await page.$(sel);
                     if (el) {
                         const text = await page.evaluate(element => element.textContent, el);
                         const price = parsePrice(text.trim());
                         if (price) {
                             foundPrice = price;
-                            break; 
+                            break;
                         }
                     }
                 } catch (e) {}
@@ -140,7 +157,7 @@ async function updateStore(page, storeInventory, storeName, baseUrl, selectors, 
                 console.log(`   [${storeName}] ${item}: £${foundPrice}`);
             } else {
                 console.log(`   [${storeName}] ${item}: Not found. (Saving screenshot)`);
-                try { await page.screenshot({ path: `debug-${storeName}-${item.replace(/\s/g,'')}.png` }); } catch(e) {}
+                try { await page.screenshot({ path: `debug-${storeName}-${item.replace(/\s/g, '')}.png` }); } catch(e) {}
             }
 
         } catch (error) {
