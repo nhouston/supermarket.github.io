@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basket Check UK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f1f5f9;
+            --surface: #ffffff;
+            --primary: #2563eb;
+            --text-main: #0f172a;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            
+            /* Brand Colors */
+            --c-sainsburys: #f06c00;
+            --c-tesco: #00539f;
+            --c-asda: #78be20;
+            --c-aldi: #001d6c;
+            --c-morrisons: #005e35;
+            --c-generic: #475569;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--text-main);
+            margin: 0;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- HEADER & SEARCH SECTION --- */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            margin: 0;
+            background: linear-gradient(135deg, #0f172a 0%, #475569 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        .input-container {
+            position: relative;
+            max-width: 600px;
+            margin: 30px auto 0;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 20px 24px;
+            font-size: 1.1rem;
+            border: 2px solid transparent;
+            border-radius: 20px;
+            background: var(--surface);
+            box-shadow: var(--shadow-lg);
+            box-sizing: border-box;
+            transition: all 0.2s ease;
+            outline: none;
+            color: var(--text-main);
+        }
+
+        .search-bar:focus {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .add-btn-absolute {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            bottom: 8px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 24px;
+            border-radius: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .add-btn-absolute:hover { background: #1d4ed8; }
+
+        /* --- BASKET (CHIPS LAYOUT) --- */
+        .basket-area {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            min-height: 60px;
+        }
+
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .chip {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s;
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: default;
+        }
+
+        .chip:hover {
+            border-color: #cbd5e1;
+            transform: translateY(-1px);
+        }
+
+        .chip-remove {
+            background: #e2e8f0;
+            color: var(--text-secondary);
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .chip-remove:hover {
+            background: #fee2e2;
+            color: #ef4444;
+        }
+
+        /* --- RESULTS GRID --- */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .results-grid.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .store-card {
+            background: var(--surface);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .store-card:hover { transform: translateY(-4px); }
+
+        /* Store Header */
+        .store-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .store-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .price-big {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        /* Store Specific Branding */
+        .brand-Sainsburys { color: var(--c-sainsburys); }
+        .brand-Tesco { color: var(--c-tesco); }
+        .brand-Asda { color: var(--c-asda); }
+        .brand-Aldi { color: var(--c-aldi); }
+        .brand-Morrisons { color: var(--c-morrisons); }
+
+        /* Missing Items List */
+        .missing-section {
+            margin-top: auto;
+            padding-top: 15px;
+            font-size: 0.85rem;
+            color: #ef4444;
+        }
+        .found-all-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #059669;
+            background: #ecfdf5;
+            padding: 6px 12px;
+            border-radius: 20px;
+            align-self: flex-start;
+        }
+
+        /* WINNER CARD STYLING */
+        .store-card.winner {
+            border: 2px solid #fbbf24; /* Gold Border */
+            background: #fffbeb;
+            box-shadow: 0 20px 25px -5px rgba(251, 191, 36, 0.15);
+            order: -1; /* Force to first position */
+        }
+        
+        .winner-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #fbbf24;
+            color: #78350f;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 6px 12px;
+            border-bottom-left-radius: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Empty State */
+        .empty-message {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-top: 40px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- Header & Search -->
+    <div class="hero-section">
+        <h1>Basket Check</h1>
+        <div class="subtitle" id="statusText">Syncing with supermarkets...</div>
+
+        <div class="input-container">
+            <input type="text" id="itemInput" list="scrapedItems" class="search-bar" placeholder="What do you need? (e.g. Milk, Bread...)" autocomplete="off">
+            <button class="add-btn-absolute" onclick="addItem()">Add</button>
+            <datalist id="scrapedItems">
+                <!-- Populated via JS -->
+            </datalist>
+        </div>
+    </div>
+
+    <!-- Basket (Chips) -->
+    <div class="basket-area">
+        <div id="basketChips" class="chips-container">
+            <!-- Chips go here -->
+        </div>
+        <div id="emptyState" class="empty-message">
+            Start building your basket above.<br>We'll find the cheapest total automatically.
+        </div>
+    </div>
+
+    <!-- Results Grid -->
+    <div id="resultsGrid" class="results-grid">
+        <!-- Store Cards Injected Here -->
+    </div>
+
+</div>
+
+<script>
+    let priceData = null;
+    let basket = new Set();
+
+    // Theme mapping for colors
+    const BRAND_CLASS = {
+        "Sainsburys": "brand-Sainsburys",
+        "Tesco": "brand-Tesco",
+        "Asda": "brand-Asda",
+        "Aldi": "brand-Aldi",
+        "Morrisons": "brand-Morrisons"
+    };
+
+    const MOCK_DATA = {
+        lastUpdated: "Preview Mode",
+        prices: {
+            "Sainsburys": { "Milk": 1.15, "Bread": 0.75, "Eggs": 2.10, "Bananas": 0.90, "Rice": 1.20, "Pasta": 0.65, "Chicken Breast": 3.50, "Potatoes": 1.00, "Cheese": 2.50, "Apples": 1.50 },
+            "Tesco": { "Milk": 1.20, "Bread": 0.80, "Eggs": 1.95, "Bananas": 0.85, "Rice": 1.10, "Pasta": 0.70, "Chicken Breast": 3.40, "Potatoes": 1.10, "Cheese": 2.40, "Apples": 1.60 },
+            "Asda": { "Milk": 1.10, "Bread": 0.70, "Eggs": 2.00, "Bananas": 0.88, "Rice": 1.00, "Pasta": 0.60, "Chicken Breast": 3.30, "Potatoes": 0.90, "Cheese": 2.30, "Apples": 1.40 },
+            "Aldi": { "Milk": 1.05, "Bread": 0.65, "Eggs": 1.80, "Bananas": 0.79, "Rice": 0.90, "Pasta": 0.45, "Chicken Breast": 3.10, "Potatoes": 0.85, "Cheese": 2.10, "Apples": 1.20 },
+            "Morrisons": { "Milk": 1.25, "Bread": 0.85, "Eggs": 2.20, "Bananas": 0.95, "Rice": 1.30, "Pasta": 0.75, "Chicken Breast": 3.60, "Potatoes": 1.20, "Cheese": 2.60, "Apples": 1.70 }
+        }
+    };
+
+    async function init() {
+        try {
+            const res = await fetch('prices.json');
+            if (!res.ok) throw new Error("No data file");
+            priceData = await res.json();
+            document.getElementById('statusText').innerHTML = `Market Data Updated: ${priceData.lastUpdated}`;
+        } catch (e) {
+            console.warn("Using Mock Data");
+            priceData = MOCK_DATA;
+            document.getElementById('statusText').innerHTML = `Preview Mode (Mock Data)`;
+        }
+        populateSuggestions();
+
+        // Enter key listener
+        document.getElementById('itemInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') addItem();
+        });
+    }
+
+    function populateSuggestions() {
+        if (!priceData) return;
+        const stores = Object.values(priceData.prices);
+        if (stores.length === 0) return;
+        
+        const knownItems = Object.keys(stores[0]);
+        const datalist = document.getElementById('scrapedItems');
+        datalist.innerHTML = knownItems.map(item => `<option value="${item}">`).join('');
+    }
+
+    function addItem() {
+        const input = document.getElementById('itemInput');
+        const rawValue = input.value.trim();
+        
+        if (!rawValue) return;
+
+        const formattedValue = rawValue.charAt(0).toUpperCase() + rawValue.slice(1).toLowerCase();
+        
+        if (basket.has(formattedValue)) {
+            // Visual shake or border flash could go here
+            input.value = '';
+            return;
+        }
+
+        basket.add(formattedValue);
+        renderChips();
+        updateComparison();
+        input.value = '';
+        input.focus();
+    }
+
+    function removeItem(item) {
+        basket.delete(item);
+        renderChips();
+        updateComparison();
+    }
+
+    function renderChips() {
+        const container = document.getElementById('basketChips');
+        const emptyState = document.getElementById('emptyState');
+        
+        if (basket.size === 0) {
+            container.innerHTML = '';
+            emptyState.style.display = 'block';
+            document.getElementById('resultsGrid').classList.remove('visible');
+            document.getElementById('resultsGrid').innerHTML = '';
+            return;
+        }
+
+        emptyState.style.display = 'none';
+        container.innerHTML = Array.from(basket).map(item => `
+            <div class="chip">
+                ${item}
+                <button class="chip-remove" onclick="removeItem('${item}')">✕</button>
+            </div>
+        `).join('');
+    }
+
+    function updateComparison() {
+        if (basket.size === 0) return;
+
+        const container = document.getElementById('resultsGrid');
+        container.classList.add('visible');
+
+        const results = Object.entries(priceData.prices).map(([store, inventory]) => {
+            let total = 0;
+            let missing = [];
+            
+            basket.forEach(item => {
+                let price = inventory[item];
+                // Case-insensitive fallback
+                if (price === undefined) {
+                    const key = Object.keys(inventory).find(k => k.toLowerCase() === item.toLowerCase());
+                    if (key) price = inventory[key];
+                }
+
+                if (price !== null && price !== undefined) {
+                    total += price;
+                } else {
+                    missing.push(item);
+                }
+            });
+            
+            return { store, total, missing };
+        });
+
+        // Sort by total price
+        results.sort((a, b) => a.total - b.total);
+
+        container.innerHTML = results.map((res, idx) => {
+            const isWinner = idx === 0;
+            const brandClass = BRAND_CLASS[res.store] || 'brand-generic';
+            
+            return `
+                <div class="store-card ${isWinner ? 'winner' : ''}">
+                    ${isWinner ? '<div class="winner-tag">Cheapest</div>' : ''}
+                    
+                    <div class="store-header">
+                        <span class="store-title ${brandClass}">${res.store}</span>
+                        <span class="price-big">£${res.total.toFixed(2)}</span>
+                    </div>
+
+                    ${res.missing.length === 0 
+                        ? `<div class="found-all-badge">
+                             <svg style="width:14px;height:14px" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                             All items found
+                           </div>`
+                        : `<div class="missing-section">
+                             <strong>Unavailable:</strong> ${res.missing.join(', ')}
+                           </div>`
+                    }
+                </div>
+            `;
+        }).join('');
+    }
+
+    init();
+</script>
+</body>
+</html>
