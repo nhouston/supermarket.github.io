@@ -1,31 +1,24 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-// 1. LOAD MEMORY (wishlist.json)
-// This file stores the list of items we want to track forever.
+// 1. LOAD MEMORY
 let wishlist = [];
 try {
     wishlist = JSON.parse(fs.readFileSync('wishlist.json', 'utf8'));
 } catch (e) {
-    // Default list if file is missing
     wishlist = ['Milk', 'Bread']; 
 }
 
-// 2. CHECK FOR NEW ITEMS (From Manual Workflow Input)
-// If you run the GitHub Action manually and type "Saffron", it appears here.
+// 2. CHECK FOR NEW ITEMS
 const newItem = process.env.NEW_ITEM;
 if (newItem && newItem.trim() !== "") {
     const formatted = newItem.trim();
-    // Add only if unique (case-insensitive check)
     if (!wishlist.some(item => item.toLowerCase() === formatted.toLowerCase())) {
         wishlist.push(formatted);
-        // Save immediately so we remember it for next time
         fs.writeFileSync('wishlist.json', JSON.stringify(wishlist, null, 2));
-        console.log(`📝 Added "${formatted}" to wishlist.`);
     }
 }
 
-// Helper: Clean price text (e.g. "£1.50" -> 1.50, "80p" -> 0.80)
 function parsePrice(priceStr) {
     if (!priceStr) return null;
     let clean = priceStr.toLowerCase().replace(/[^\d.p]/g, '');
@@ -38,104 +31,122 @@ async function scrapeSupermarkets() {
     
     const browser = await puppeteer.launch({
         headless: "new",
-        // Add these args to bypass some basic detection
         args: [
             '--no-sandbox', 
             '--disable-setuid-sandbox', 
             '--window-size=1920,1080',
-            '--disable-blink-features=AutomationControlled'
+            '--disable-blink-features=AutomationControlled',
+            '--disable-features=IsolateOrigins,site-per-process'
         ]
     });
 
     const page = await browser.newPage();
     
-    // 3. STEALTH MODE: Set headers to look like a real Mac Chrome user
-    await page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-    await page.setExtraHTTPHeaders({
-        'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-    });
-
+    // STEALTH: Pass as a real browser
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    
     const allData = { 'Sainsburys': {}, 'Tesco': {}, 'Asda': {}, 'Aldi': {}, 'Morrisons': {} };
 
-    // --- STORE CONFIGURATIONS ---
-    // We provide an ARRAY of selectors to try in order. If one fails, it tries the next.
+    // --- CONFIGURATION ---
+    // selector: The CSS class for the price
+    // cookieBtn: The selector for the "Accept Cookies" button (to clear the screen)
     
     await updateStore(page, allData['Sainsburys'], 'Sainsburys', 
         'https://www.sainsburys.co.uk/groceries/search?searchTerm=', 
-        ['[data-test-id="pt-retail-price"]', '.pt__cost', '.pricePerUnit']
+        ['[data-test-id="pt-retail-price"]', '.pt__cost'],
+        '#onetrust-accept-btn-handler' // Cookie button
     );
 
     await updateStore(page, allData['Tesco'], 'Tesco', 
         'https://www.tesco.com/groceries/en-GB/search?query=', 
-        ['.price-per-sellable-unit .value', '[data-auto="price-value"]', '.beans-price__text']
+        ['.price-per-sellable-unit .value', '[data-auto="price-value"]'],
+        'button[title="Accept all cookies"]'
     );
 
     await updateStore(page, allData['Asda'], 'Asda', 
         'https://groceries.asda.com/search/', 
-        ['.co-product-list__main-cntr .co-item__price', '.price', 'strong.co-product-list__price']
+        ['.co-product-list__main-cntr .co-item__price', 'strong.co-product-list__price'],
+        '#onetrust-accept-btn-handler'
     );
 
     await updateStore(page, allData['Aldi'], 'Aldi', 
         'https://www.aldi.co.uk/results?q=', 
-        ['.product-tile-price .h4', '.product-price', '.text-primary']
+        ['.product-tile-price .h4', '.product-tile-price', '.text-primary'],
+        '#onetrust-accept-btn-handler'
     );
     
-    // Morrisons is extremely strict on bots, this is a best effort
     await updateStore(page, allData['Morrisons'], 'Morrisons', 
         'https://groceries.morrisons.com/search?q=', 
-        ['.fops-price', '.price-group', '.bop-price__current']
+        ['.fops-price', '.bop-price__current'],
+        '#onetrust-accept-btn-handler'
     );
 
     await browser.close();
 
-    const output = {
-        lastUpdated: new Date().toLocaleString(),
-        prices: allData
-    };
-
+    const output = { lastUpdated: new Date().toLocaleString(), prices: allData };
     fs.writeFileSync('prices.json', JSON.stringify(output, null, 2));
     console.log('✅ Scrape complete.');
 }
 
-async function updateStore(page, storeInventory, storeName, baseUrl, selectors) {
+async function updateStore(page, storeInventory, storeName, baseUrl, selectors, cookieBtnSelector) {
+    let cookieClicked = false;
+
     for (const item of wishlist) {
         try {
             const url = `${baseUrl}${encodeURIComponent(item)}`;
-            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 25000 });
+            // Increased timeout to 45s for slow loads
+            await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 });
             
-            // Human pause to avoid rate limits (Random wait between 1s and 2.5s)
-            await new Promise(r => setTimeout(r, 1000 + Math.random() * 1500));
+            // 1. TRY TO SMASH COOKIE BANNER (Once per store)
+            if (!cookieClicked && cookieBtnSelector) {
+                try {
+                    const btn = await page.waitForSelector(cookieBtnSelector, { timeout: 2000 });
+                    if (btn) {
+                        await btn.click();
+                        await new Promise(r => setTimeout(r, 1000)); // Wait for banner to disappear
+                        cookieClicked = true;
+                    }
+                } catch(e) {}
+            }
+
+            // 2. CHECK PAGE TITLE (Debug: Are we blocked?)
+            const title = await page.title();
+            if (title.includes("Access Denied") || title.includes("Robot")) {
+                console.log(`   [${storeName}] ⛔ BLOCKED. (IP banned by store)`);
+                continue; 
+            }
 
             let foundPrice = null;
 
-            // TRY MULTIPLE SELECTORS
+            // 3. FIND PRICE
             for (const sel of selectors) {
                 try {
-                    // Wait briefly for this selector (2 seconds max)
-                    const el = await page.waitForSelector(sel, { timeout: 2000 });
+                    const el = await page.waitForSelector(sel, { timeout: 1500 });
                     if (el) {
                         const text = await page.evaluate(element => element.textContent, el);
                         const price = parsePrice(text.trim());
                         if (price) {
                             foundPrice = price;
-                            break; // Stop checking other selectors if we found one
+                            break; 
                         }
                     }
-                } catch (e) {
-                    // Selector not found, try next one
-                }
+                } catch (e) {}
             }
 
             if (foundPrice) {
                 storeInventory[item] = foundPrice;
                 console.log(`   [${storeName}] ${item}: £${foundPrice}`);
             } else {
-                console.log(`   [${storeName}] ${item}: Not found`);
+                console.log(`   [${storeName}] ${item}: Not found. Saving screenshot...`);
+                // 4. TAKE DEBUG SCREENSHOT
+                // This will create a file like "debug-Tesco-Milk.png" so you can see what happened
+                try {
+                    await page.screenshot({ path: `debug-${storeName}-${item.replace(/\s/g,'')}.png` });
+                } catch(e) {}
             }
 
         } catch (error) {
-            console.log(`   [${storeName}] Error loading page for ${item}`);
+            console.log(`   [${storeName}] Error: ${error.message}`);
         }
     }
 }
