@@ -1,65 +1,10 @@
 {
-  "lastUpdated": "11/19/2025, 2:35:14 PM",
+  "lastUpdated": "11/19/2025, 2:55:27 PM",
   "prices": {
-    "Sainsburys": {
-      "Milk": null,
-      "Bread": null,
-      "Eggs": null,
-      "Bananas": null,
-      "Rice": null,
-      "Pasta": null,
-      "Chicken Breast": null,
-      "Potatoes": null,
-      "Cheese": null,
-      "Apples": null
-    },
-    "Tesco": {
-      "Milk": null,
-      "Bread": null,
-      "Eggs": null,
-      "Bananas": null,
-      "Rice": null,
-      "Pasta": null,
-      "Chicken Breast": null,
-      "Potatoes": null,
-      "Cheese": null,
-      "Apples": null
-    },
-    "Asda": {
-      "Milk": null,
-      "Bread": null,
-      "Eggs": null,
-      "Bananas": null,
-      "Rice": null,
-      "Pasta": null,
-      "Chicken Breast": null,
-      "Potatoes": null,
-      "Cheese": null,
-      "Apples": null
-    },
-    "Aldi": {
-      "Milk": null,
-      "Bread": null,
-      "Eggs": null,
-      "Bananas": null,
-      "Rice": null,
-      "Pasta": null,
-      "Chicken Breast": null,
-      "Potatoes": null,
-      "Cheese": null,
-      "Apples": null
-    },
-    "Morrisons": {
-      "Milk": null,
-      "Bread": null,
-      "Eggs": null,
-      "Bananas": null,
-      "Rice": null,
-      "Pasta": null,
-      "Chicken Breast": null,
-      "Potatoes": null,
-      "Cheese": null,
-      "Apples": null
-    }
+    "Sainsburys": {},
+    "Tesco": {},
+    "Asda": {},
+    "Aldi": {},
+    "Morrisons": {}
   }
 }
