@@ -1,4 +1,12 @@
-bread
-milk
-eggs
-coffee
+[
+  "Milk",
+  "Bread",
+  "Eggs",
+  "Bananas",
+  "Rice",
+  "Pasta",
+  "Chicken Breast",
+  "Potatoes",
+  "Cheese",
+  "Apples"
+]
