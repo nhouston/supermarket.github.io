@@ -62,7 +62,7 @@ async function scrapeSupermarkets() {
     // We provide an ARRAY of selectors to try in order. If one fails, it tries the next.
     
     await updateStore(page, allData['Sainsburys'], 'Sainsburys', 
-        'https://www.sainsburys.co.uk/gol-ui/SearchResults/', 
+        'https://www.sainsburys.co.uk/groceries/search?searchTerm=', 
         ['[data-test-id="pt-retail-price"]', '.pt__cost', '.pricePerUnit']
     );
 
@@ -77,13 +77,13 @@ async function scrapeSupermarkets() {
     );
 
     await updateStore(page, allData['Aldi'], 'Aldi', 
-        'https://groceries.aldi.co.uk/en-GB/Search?keywords=', 
+        'https://www.aldi.co.uk/results?q=', 
         ['.product-tile-price .h4', '.product-price', '.text-primary']
     );
     
     // Morrisons is extremely strict on bots, this is a best effort
     await updateStore(page, allData['Morrisons'], 'Morrisons', 
-        'https://groceries.morrisons.com/search?entry=', 
+        'https://groceries.morrisons.com/search?q=', 
         ['.fops-price', '.price-group', '.bop-price__current']
     );
 
