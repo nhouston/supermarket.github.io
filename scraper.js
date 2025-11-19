@@ -1,10 +1,31 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 
-const SHOPPING_LIST = [
-    'Milk', 'Bread', 'Eggs', 'Bananas', 'Rice', 'Pasta', 'Chicken Breast', 'Potatoes', 'Cheese', 'Apples'
-];
+// 1. LOAD THE WISHLIST (The Memory)
+let wishlist = [];
+try {
+    wishlist = JSON.parse(fs.readFileSync('wishlist.json', 'utf8'));
+} catch (e) {
+    wishlist = ['Milk', 'Bread']; // Fallback
+}
 
+// 2. CHECK FOR NEW ITEM INJECTION (From Manual Workflow)
+const newItem = process.env.NEW_ITEM;
+if (newItem && newItem.trim() !== "") {
+    const formatted = newItem.trim();
+    // Only add if not already there (Case insensitive check)
+    if (!wishlist.some(item => item.toLowerCase() === formatted.toLowerCase())) {
+        wishlist.push(formatted);
+        console.log(`📝 LEARNING: Added "${formatted}" to wishlist.json`);
+        
+        // SAVE THE UPDATED WISHLIST BACK TO FILE
+        fs.writeFileSync('wishlist.json', JSON.stringify(wishlist, null, 2));
+    } else {
+        console.log(`ℹ️ ALREADY KNOW: "${formatted}" is already in the list.`);
+    }
+}
+
+// Helper to parse currency
 function parsePrice(priceStr) {
     if (!priceStr) return null;
     let clean = priceStr.toLowerCase().replace(/[^\d.p]/g, '');
@@ -13,25 +34,8 @@ function parsePrice(priceStr) {
 }
 
 async function scrapeSupermarkets() {
-    // CHECK FOR SPECIFIC INPUT
-    const specificItem = process.env.SPECIFIC_ITEM;
+    console.log(`🛒 Scraping ${wishlist.length} items from wishlist...`);
     
-    let itemsToScrape = [];
-    let existingData = { prices: {} };
-
-    if (specificItem && specificItem.trim() !== "") {
-        console.log(`🎯 TARGETED MODE: Searching for "${specificItem}"`);
-        itemsToScrape = [specificItem];
-        
-        // Load existing data so we don't delete it
-        if (fs.existsSync('prices.json')) {
-            existingData = JSON.parse(fs.readFileSync('prices.json', 'utf8'));
-        }
-    } else {
-        console.log('🧹 SWEEP MODE: Running daily categories');
-        itemsToScrape = SHOPPING_LIST;
-    }
-
     const browser = await puppeteer.launch({
         headless: "new",
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--window-size=1920,1080']
@@ -39,51 +43,56 @@ async function scrapeSupermarkets() {
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36');
 
-    // Initialize structure if empty
-    if (!existingData.prices['Sainsburys']) existingData.prices['Sainsburys'] = {};
-    if (!existingData.prices['Tesco']) existingData.prices['Tesco'] = {};
-    if (!existingData.prices['Asda']) existingData.prices['Asda'] = {};
-    if (!existingData.prices['Aldi']) existingData.prices['Aldi'] = {};
-    if (!existingData.prices['Morrisons']) existingData.prices['Morrisons'] = {};
+    const allData = {};
+    const stores = ['Sainsburys', 'Tesco', 'Asda', 'Aldi', 'Morrisons'];
+    
+    // Initialize structure
+    stores.forEach(store => allData[store] = {});
 
-    // --- Scrape Logic ---
-    // We pass the specific list (1 item or all items)
-    await updateStore(page, existingData.prices['Sainsburys'], 'Sainsburys', 'https://www.sainsburys.co.uk/gol-ui/SearchResults/', '.pt__cost', itemsToScrape);
-    await updateStore(page, existingData.prices['Tesco'], 'Tesco', 'https://www.tesco.com/groceries/en-GB/search?query=', '.price-per-sellable-unit .value', itemsToScrape);
-    await updateStore(page, existingData.prices['Asda'], 'Asda', 'https://groceries.asda.com/search/', '.co-product-list__main-cntr .co-item__price', itemsToScrape);
-    await updateStore(page, existingData.prices['Aldi'], 'Aldi', 'https://groceries.aldi.co.uk/en-GB/Search?keywords=', '.product-tile-price .h4', itemsToScrape);
-    await updateStore(page, existingData.prices['Morrisons'], 'Morrisons', 'https://groceries.morrisons.com/search?entry=', '.fops-price', itemsToScrape);
+    // --- SCRAPE LOOP ---
+    // We pass the WHOLE wishlist to each store
+    await updateStore(page, allData['Sainsburys'], 'Sainsburys', 'https://www.sainsburys.co.uk/gol-ui/SearchResults/', '.pt__cost');
+    await updateStore(page, allData['Tesco'], 'Tesco', 'https://www.tesco.com/groceries/en-GB/search?query=', '.price-per-sellable-unit .value');
+    await updateStore(page, allData['Asda'], 'Asda', 'https://groceries.asda.com/search/', '.co-product-list__main-cntr .co-item__price');
+    await updateStore(page, allData['Aldi'], 'Aldi', 'https://groceries.aldi.co.uk/en-GB/Search?keywords=', '.product-tile-price .h4');
+    await updateStore(page, allData['Morrisons'], 'Morrisons', 'https://groceries.morrisons.com/search?entry=', '.fops-price');
 
     await browser.close();
 
     const output = {
         lastUpdated: new Date().toLocaleString(),
-        prices: existingData.prices // Save the merged data
+        prices: allData
     };
 
     fs.writeFileSync('prices.json', JSON.stringify(output, null, 2));
-    console.log('✅ Database updated.');
+    console.log('✅ Scrape complete. Prices updated.');
 }
 
-async function updateStore(page, storeInventory, storeName, baseUrl, priceSelector, items) {
-    for (const item of items) {
+async function updateStore(page, storeInventory, storeName, baseUrl, priceSelector) {
+    // We shuffle the list slightly to act more human, or just run straight through
+    for (const item of wishlist) {
         try {
+            // Navigate
             await page.goto(`${baseUrl}${encodeURIComponent(item)}`, { waitUntil: 'domcontentloaded', timeout: 20000 });
-            await new Promise(r => setTimeout(r, 1000)); // Wait 1s
+            
+            // Human Delay (0.5s to 1.5s)
+            await new Promise(r => setTimeout(r, 500 + Math.random() * 1000));
 
             try {
-                await page.waitForSelector(priceSelector, { timeout: 4000 });
+                await page.waitForSelector(priceSelector, { timeout: 3000 });
                 const text = await page.$eval(priceSelector, el => el.textContent.trim());
                 const price = parsePrice(text);
-                if(price) {
-                    storeInventory[item] = price; // Update specific item
-                    console.log(`   [${storeName}] Found ${item}: £${price}`);
+                
+                if (price) {
+                    storeInventory[item] = price;
+                    console.log(`   [${storeName}] ${item}: £${price}`);
                 }
             } catch (e) {
-                console.log(`   [${storeName}] ${item}: Not found`);
+                // Item not found or selector failed
+                // console.log(`   [${storeName}] ${item}: Not found`);
             }
         } catch (error) {
-            // Ignore nav errors
+            console.log(`   [${storeName}] Error loading page for ${item}`);
         }
     }
 }
