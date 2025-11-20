@@ -21,8 +21,14 @@ if (newItem && newItem.trim() !== "") {
 
 function parsePrice(priceStr) {
     if (!priceStr) return null;
+    // Remove everything except digits, dots, and 'p'
     let clean = priceStr.toLowerCase().replace(/[^\d.p]/g, '');
-    if (clean.includes('p')) { return parseFloat(clean.replace('p', '')) / 100; }
+    
+    // Handle pence (e.g., "50p" -> 0.50)
+    if (clean.includes('p')) { 
+        return parseFloat(clean.replace('p', '')) / 100; 
+    }
+    
     return parseFloat(clean);
 }
 
@@ -39,7 +45,7 @@ async function wiggleMouse(page) {
 }
 
 async function scrapeSupermarkets() {
-    console.log(`🛒 Scraping ${wishlist.length} items...`);
+    console.log(`🛒 Scraping ${wishlist.length} items (finding cheapest)...`);
 
     const browser = await puppeteer.launch({
         headless: "new",
@@ -58,18 +64,11 @@ async function scrapeSupermarkets() {
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36');
     await page.setViewport({ width: 1366, height: 768 });
 
-    const allData = { 'Sainsburys': {}, 'Tesco': {}, 'Asda': {}, 'Aldi': {}, 'Morrisons': {} };
+    // Removed 'Sainsburys' from data structure
+    const allData = { 'Tesco': {}, 'Asda': {}, 'Aldi': {}, 'Morrisons': {} };
 
     // --- CONFIGURATIONS ---
     
-    // SAINSBURYS: Updated with specific pkgid selector
-    await updateStore(page, allData['Sainsburys'], 'Sainsburys',
-        'https://www.sainsburys.co.uk/groceries/search?searchTerm=',
-        ['[data-pkgid*="display-2"]', '.ds-c-price-flexible__price', '[data-test-id="pt-retail-price"]', '.pt__cost'],
-        '#onetrust-accept-btn-handler',
-        false, false, true // Enable Sainsbury's home-first logic
-    );
-
     // TESCO
     await updateStore(page, allData['Tesco'], 'Tesco',
         'https://www.tesco.com/groceries/en-GB/search?query=',
@@ -82,7 +81,7 @@ async function scrapeSupermarkets() {
         'https://groceries.asda.com/search/',
         ['[data-locator="txt-product-price"]', '.co-product-list__main-cntr .co-item__price', '.price', 'strong.co-product-list__price'],
         '#onetrust-accept-btn-handler',
-        false, false, true // Enable Asda home-first logic
+        false, false, true 
     );
 
     // ALDI
@@ -109,13 +108,12 @@ async function scrapeSupermarkets() {
 async function updateStore(page, storeInventory, storeName, baseUrl, selectors, cookieSelector, isTesco = false, isAldi = false, goHomeFirst = false) {
     let cookieHandled = false;
 
-    // Optional: Go to homepage first to establish session/cookies for tough sites
+    // Optional: Go to homepage first
     if (goHomeFirst) {
         try {
             const homeUrl = new URL(baseUrl).origin;
             await page.goto(homeUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
             await wiggleMouse(page);
-            // Increased wait time to 4s to let cookies settle
             await new Promise(r => setTimeout(r, 4000));
         } catch(e) {}
     }
@@ -126,21 +124,18 @@ async function updateStore(page, storeInventory, storeName, baseUrl, selectors, 
             
             await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
             await wiggleMouse(page); 
-            // Increased wait time between items to reduce block chance
             await new Promise(r => setTimeout(r, 3500));
 
-            // --- POPUP KILLER LOGIC ---
+            // --- POPUP KILLER ---
             if (!cookieHandled) {
                 try {
                     if (isTesco) {
-                        // Tesco: Click "Accept all" button specifically
                         await page.evaluate(() => {
                             const buttons = Array.from(document.querySelectorAll('button'));
                             const accept = buttons.find(b => b.innerText.includes('Accept all'));
                             if (accept) accept.click();
                         });
                     } else if (isAldi) {
-                        // Aldi: Close "Store Selection" popup
                         try { await page.click('.close-modal'); } catch(e) {}
                         try { await page.click('button[aria-label="Close"]'); } catch(e) {}
                         try { await page.click('#onetrust-accept-btn-handler'); } catch(e) {}
@@ -153,25 +148,31 @@ async function updateStore(page, storeInventory, storeName, baseUrl, selectors, 
                 } catch (e) {}
             }
 
-            // --- PRICE FINDER ---
-            let foundPrice = null;
+            // --- PRICE FINDER (SCAN ALL & PICK CHEAPEST) ---
+            let foundPrices = [];
+            
             for (const sel of selectors) {
                 try {
-                    const el = await page.$(sel);
-                    if (el) {
-                        const text = await page.evaluate(element => element.textContent, el);
-                        const price = parsePrice(text.trim());
-                        if (price) {
-                            foundPrice = price;
-                            break;
-                        }
+                    // Get ALL matching elements, not just the first one
+                    const elements = await page.$$(sel);
+                    if (elements.length > 0) {
+                        // Extract text from all of them
+                        const texts = await Promise.all(elements.map(el => page.evaluate(e => e.textContent, el)));
+                        
+                        // Parse and collect valid prices
+                        texts.forEach(txt => {
+                            const p = parsePrice(txt.trim());
+                            if (p && p > 0) foundPrices.push(p);
+                        });
                     }
                 } catch (e) {}
             }
 
-            if (foundPrice) {
-                storeInventory[item] = foundPrice;
-                console.log(`   [${storeName}] ${item}: £${foundPrice}`);
+            if (foundPrices.length > 0) {
+                // Find the absolute lowest price on the page
+                const cheapest = Math.min(...foundPrices);
+                storeInventory[item] = cheapest;
+                console.log(`   [${storeName}] ${item}: £${cheapest} (Lowest of ${foundPrices.length} items)`);
             } else {
                 console.log(`   [${storeName}] ${item}: Not found. (Saving screenshot)`);
                 try { await page.screenshot({ path: `debug-${storeName}-${item.replace(/\s/g, '')}.png` }); } catch(e) {}
