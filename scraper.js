@@ -21,14 +21,8 @@ if (newItem && newItem.trim() !== "") {
 
 function parsePrice(priceStr) {
     if (!priceStr) return null;
-    // Remove everything except digits, dots, and 'p'
     let clean = priceStr.toLowerCase().replace(/[^\d.p]/g, '');
-    
-    // Handle pence (e.g., "50p" -> 0.50)
-    if (clean.includes('p')) { 
-        return parseFloat(clean.replace('p', '')) / 100; 
-    }
-    
+    if (clean.includes('p')) { return parseFloat(clean.replace('p', '')) / 100; }
     return parseFloat(clean);
 }
 
@@ -64,15 +58,17 @@ async function scrapeSupermarkets() {
     await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36');
     await page.setViewport({ width: 1366, height: 768 });
 
-    // Removed 'Sainsburys' from data structure
+    // Removed 'Sainsburys'
     const allData = { 'Tesco': {}, 'Asda': {}, 'Aldi': {}, 'Morrisons': {} };
 
     // --- CONFIGURATIONS ---
-    
+    // Added nameSelectors to each store config
+
     // TESCO
     await updateStore(page, allData['Tesco'], 'Tesco',
         'https://www.tesco.com/groceries/en-GB/search?query=',
         ['._64Yvfa_priceText', '.price-per-sellable-unit .value', '[data-auto="price-value"]', '.beans-price__text'],
+        ['a[data-auto="product-tile--title"]', '.beans-link__text'], // Name selectors
         null, true 
     );
 
@@ -80,6 +76,7 @@ async function scrapeSupermarkets() {
     await updateStore(page, allData['Asda'], 'Asda',
         'https://groceries.asda.com/search/',
         ['[data-locator="txt-product-price"]', '.co-product-list__main-cntr .co-item__price', '.price', 'strong.co-product-list__price'],
+        ['[data-locator="txt-product-title"]', '.co-product-list__main-cntr .co-item__title', 'h3.co-product-list__title'], // Name selectors
         '#onetrust-accept-btn-handler',
         false, false, true 
     );
@@ -88,6 +85,7 @@ async function scrapeSupermarkets() {
     await updateStore(page, allData['Aldi'], 'Aldi',
         'https://www.aldi.co.uk/results?q=',
         ['.base-price__regular', '.product-tile-price .h4', '.product-price span'],
+        ['.product-tile-text', '.product-name'], // Name selectors
         '#onetrust-accept-btn-handler', false, true 
     );
 
@@ -95,6 +93,7 @@ async function scrapeSupermarkets() {
     await updateStore(page, allData['Morrisons'], 'Morrisons',
         'https://groceries.morrisons.com/search?q=',
         ['[data-test="fop-price"]', 'span._display_xy0eg_1', '.fops-price', '.bop-price__current'],
+        ['[data-test="fop-title"]', 'h4._display_14438_1', '.fop-title'], // Name selectors
         '#onetrust-accept-btn-handler'
     );
 
@@ -105,10 +104,9 @@ async function scrapeSupermarkets() {
     console.log('✅ Scrape complete.');
 }
 
-async function updateStore(page, storeInventory, storeName, baseUrl, selectors, cookieSelector, isTesco = false, isAldi = false, goHomeFirst = false) {
+async function updateStore(page, storeInventory, storeName, baseUrl, priceSelectors, nameSelectors, cookieSelector, isTesco = false, isAldi = false, goHomeFirst = false) {
     let cookieHandled = false;
 
-    // Optional: Go to homepage first
     if (goHomeFirst) {
         try {
             const homeUrl = new URL(baseUrl).origin;
@@ -148,34 +146,58 @@ async function updateStore(page, storeInventory, storeName, baseUrl, selectors, 
                 } catch (e) {}
             }
 
-            // --- PRICE FINDER (SCAN ALL & PICK CHEAPEST) ---
-            let foundPrices = [];
+            // --- EXTRACT PRODUCTS (Name + Price) ---
+            let foundProducts = [];
             
-            for (const sel of selectors) {
+            // We try to find a container that holds both name and price, 
+            // but generic scraping is hard. simpler strategy:
+            // Grab ALL valid prices and their corresponding index/context if possible.
+            // For simplicity in this robust script, we will fetch all price texts and all name texts
+            // and assume they map 1:1 (which is usually true for grid layouts).
+
+            // 1. Find Prices
+            let prices = [];
+            for (const sel of priceSelectors) {
                 try {
-                    // Get ALL matching elements, not just the first one
                     const elements = await page.$$(sel);
                     if (elements.length > 0) {
-                        // Extract text from all of them
-                        const texts = await Promise.all(elements.map(el => page.evaluate(e => e.textContent, el)));
-                        
-                        // Parse and collect valid prices
-                        texts.forEach(txt => {
-                            const p = parsePrice(txt.trim());
-                            if (p && p > 0) foundPrices.push(p);
-                        });
+                        prices = await Promise.all(elements.map(el => page.evaluate(e => e.textContent, el)));
+                        if (prices.length > 0) break; // Found a working selector
                     }
-                } catch (e) {}
+                } catch(e){}
             }
 
-            if (foundPrices.length > 0) {
-                // Find the absolute lowest price on the page
-                const cheapest = Math.min(...foundPrices);
-                storeInventory[item] = cheapest;
-                console.log(`   [${storeName}] ${item}: £${cheapest} (Lowest of ${foundPrices.length} items)`);
+            // 2. Find Names
+            let names = [];
+            for (const sel of nameSelectors) {
+                try {
+                    const elements = await page.$$(sel);
+                    if (elements.length > 0) {
+                        names = await Promise.all(elements.map(el => page.evaluate(e => e.textContent, el)));
+                        if (names.length > 0) break; 
+                    }
+                } catch(e){}
+            }
+
+            // 3. Pair them up and find cheapest
+            for (let i = 0; i < Math.min(prices.length, names.length); i++) {
+                const pVal = parsePrice(prices[i]);
+                const pName = names[i].trim();
+                if (pVal && pVal > 0) {
+                    foundProducts.push({ price: pVal, name: pName });
+                }
+            }
+
+            if (foundProducts.length > 0) {
+                // Sort by price ascending
+                foundProducts.sort((a, b) => a.price - b.price);
+                const best = foundProducts[0];
+                
+                // Store object: { price: 1.20, name: "Tesco Milk" }
+                storeInventory[item] = best; 
+                console.log(`   [${storeName}] ${item}: £${best.price} - ${best.name}`);
             } else {
-                console.log(`   [${storeName}] ${item}: Not found. (Saving screenshot)`);
-                try { await page.screenshot({ path: `debug-${storeName}-${item.replace(/\s/g, '')}.png` }); } catch(e) {}
+                console.log(`   [${storeName}] ${item}: Not found.`);
             }
 
         } catch (error) {
