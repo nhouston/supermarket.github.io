@@ -1,52 +1,50 @@
 {
-  "lastUpdated": "11/20/2025, 8:18:27 AM",
+  "lastUpdated": "11/21/2025, 8:14:16 AM",
   "prices": {
-    "Sainsburys": {},
-    "Tesco": {
-      "Milk": 3.75,
-      "Bread": 2.5,
-      "Bananas": 0.16,
-      "Pasta": 2,
-      "Chicken Breast": 4.65,
-      "Potatoes": 3.7,
-      "Cheese": 15,
-      "Apples": 2.95
-    },
-    "Asda": {
-      "Milk": 1.65,
-      "Bread": 2.98,
-      "Eggs": 2.8,
-      "Bananas": 3.75,
-      "Rice": 0.0398,
-      "Pasta": 0.059800000000000006,
-      "Chicken Breast": 6,
-      "Potatoes": 1.5,
-      "Cheese": 1.72,
-      "Apples": 3.75
-    },
-    "Aldi": {
-      "Milk": 0.99,
-      "Bread": 0.55,
-      "Eggs": 2.25,
-      "Bananas": 0.78,
-      "Rice": 0.75,
-      "Pasta": 0.41,
-      "Chicken Breast": 4.25,
-      "Potatoes": 1.19,
-      "Cheese": 3.19,
-      "Apples": 2.09
-    },
+    "Tesco": {},
+    "Asda": {},
+    "Aldi": {},
     "Morrisons": {
-      "Milk": 2,
-      "Bread": 1.39,
-      "Eggs": 3.45,
-      "Bananas": 3.8,
-      "Rice": 6,
-      "Pasta": 0.75,
-      "Chicken Breast": 4.3,
-      "Potatoes": 1.95,
-      "Cheese": 3.8,
-      "Apples": 4
+      "Milk": {
+        "price": 1.2,
+        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
+      },
+      "Bread": {
+        "price": 0.74,
+        "name": "Morrisons White Medium Sliced Bread"
+      },
+      "Eggs": {
+        "price": 1.75,
+        "name": "Morrisons Medium Free Range Eggs   6 Pack"
+      },
+      "Bananas": {
+        "price": 0.19,
+        "name": "Fyffes Loose Bananas"
+      },
+      "Rice": {
+        "price": 0.65,
+        "name": "Morrisons Microwave Rice Basmati 250g"
+      },
+      "Pasta": {
+        "price": 0.69,
+        "name": "Morrisons Penne"
+      },
+      "Chicken Breast": {
+        "price": 2.48,
+        "name": "Morrisons British Chicken Breast Fillets 330g"
+      },
+      "Potatoes": {
+        "price": 0.79,
+        "name": "Morrisons Baking Potatoes"
+      },
+      "Cheese": {
+        "price": 1.75,
+        "name": "Heinz Creamy White Pasta Sauce"
+      },
+      "Apples": {
+        "price": 0.5,
+        "name": "Morrisons Loose Russet Apple"
+      }
     }
   }
 }
