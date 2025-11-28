@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "11/27/2025, 8:17:09 AM",
+  "lastUpdated": "11/28/2025, 8:14:27 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -22,8 +22,8 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 0.65,
-        "name": "Morrisons Microwave Rice Basmati 250g"
+        "price": 1,
+        "name": "Tilda Pots Butter And Sea Salt Jasmine Rice 2 x 125g"
       },
       "Pasta": {
         "price": 0.75,
@@ -38,8 +38,8 @@
         "name": "Morrisons Baking Potatoes"
       },
       "Cheese": {
-        "price": 2.15,
-        "name": "Boursin Garlic & Herbs Soft Cream Cheese 150g"
+        "price": 2,
+        "name": "Heinz Tomato Mascarpone & Grana Padano Pasta Sauce"
       },
       "Apples": {
         "price": 0.5,
