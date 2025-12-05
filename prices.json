@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "12/4/2025, 8:17:06 AM",
+  "lastUpdated": "12/5/2025, 8:17:29 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Tilda Pots Butter And Sea Salt Jasmine Rice 2 x 125g"
       },
       "Pasta": {
-        "price": 0.75,
-        "name": "Morrisons Fusilli"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.48,
@@ -38,8 +38,8 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 2,
-        "name": "Heinz Tomato Mascarpone & Grana Padano Pasta Sauce"
+        "price": 1.25,
+        "name": "The Laughing Cow 8 Original Cheese Spread Triangles 120g"
       },
       "Apples": {
         "price": 0.5,
