@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "12/5/2025, 8:17:29 AM",
+  "lastUpdated": "12/6/2025, 8:20:20 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -11,7 +11,7 @@
       },
       "Bread": {
         "price": 0.74,
-        "name": "Morrisons White Medium Sliced Bread"
+        "name": "Morrisons White Medium Sliced Bread 800g"
       },
       "Eggs": {
         "price": 1.75,
@@ -38,8 +38,8 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1.25,
-        "name": "The Laughing Cow 8 Original Cheese Spread Triangles 120g"
+        "price": 2,
+        "name": "Heinz Tomato Mascarpone & Grana Padano Pasta Sauce"
       },
       "Apples": {
         "price": 0.5,
