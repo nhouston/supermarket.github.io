@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "12/19/2025, 8:32:54 AM",
+  "lastUpdated": "12/20/2025, 8:21:19 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -28,18 +28,6 @@
       "Pasta": {
         "price": 0.69,
         "name": "Morrisons Penne"
-      },
-      "Chicken Breast": {
-        "price": 2,
-        "name": "Bisto Signature Chicken Ready To Use Gravy 500ml"
-      },
-      "Potatoes": {
-        "price": 1,
-        "name": "Morrisons The Best Roasting Potatoes 1.5kg"
-      },
-      "Cheese": {
-        "price": 2,
-        "name": "Morrisons The Best Prosciutto Crudo & Taleggio Rollitos 100g"
       },
       "Apples": {
         "price": 0.5,
