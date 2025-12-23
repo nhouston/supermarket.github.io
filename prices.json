@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "12/22/2025, 8:17:05 AM",
+  "lastUpdated": "12/23/2025, 8:28:07 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -20,14 +20,6 @@
       "Bananas": {
         "price": 0.19,
         "name": "Fyffes Loose Bananas"
-      },
-      "Rice": {
-        "price": 1,
-        "name": "Veetee Thai Jasmine Duo Pots"
-      },
-      "Pasta": {
-        "price": 0.69,
-        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.95,
