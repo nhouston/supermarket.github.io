@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "12/23/2025, 8:28:07 AM",
+  "lastUpdated": "12/24/2025, 8:14:12 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -10,8 +10,8 @@
         "name": "Morrisons British Whole Milk 2 Pint"
       },
       "Bread": {
-        "price": 1.39,
-        "name": "Hovis Soft White Medium Bread 800g"
+        "price": 0.74,
+        "name": "Morrisons White Medium Sliced Bread 800g"
       },
       "Eggs": {
         "price": 1.75,
@@ -20,6 +20,14 @@
       "Bananas": {
         "price": 0.19,
         "name": "Fyffes Loose Bananas"
+      },
+      "Rice": {
+        "price": 1,
+        "name": "Veetee Thai Jasmine Duo Pots"
+      },
+      "Pasta": {
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.95,
