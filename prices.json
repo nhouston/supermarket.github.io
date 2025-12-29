@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "12/28/2025, 8:20:02 AM",
+  "lastUpdated": "12/29/2025, 8:23:09 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -22,8 +22,8 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 1,
-        "name": "Veetee Thai Jasmine Duo Pots"
+        "price": 0.8,
+        "name": "Laila Basmati Rice 250g"
       },
       "Pasta": {
         "price": 0.69,
@@ -34,8 +34,8 @@
         "name": "Morrisons Market Street British Chicken Drumstick Fillets 600g"
       },
       "Potatoes": {
-        "price": 1,
-        "name": "Morrisons Jumbo Jacket Potatoes"
+        "price": 0.87,
+        "name": "Morrisons Miniature Potatoes"
       },
       "Cheese": {
         "price": 1.35,
