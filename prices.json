@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "12/30/2025, 8:17:08 AM",
+  "lastUpdated": "12/31/2025, 8:20:19 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.2,
-        "name": "Morrisons British Whole Milk 2 Pint"
+        "price": 1.65,
+        "name": "Morrisons British Semi Skimmed Milk 4 Pint"
       },
       "Bread": {
         "price": 0.74,
@@ -30,16 +30,16 @@
         "name": "Morrisons Penne"
       },
       "Chicken Breast": {
-        "price": 2.95,
-        "name": "Morrisons Market Street British Chicken Drumstick Fillets 600g"
+        "price": 2.48,
+        "name": "Morrisons British Chicken Breast Fillets 330g"
       },
       "Potatoes": {
         "price": 0.87,
         "name": "Morrisons Miniature Potatoes"
       },
       "Cheese": {
-        "price": 1.35,
-        "name": "Philadelphia Original Soft Cream Cheese 165g"
+        "price": 2.55,
+        "name": "Morrisons The Best Baking Feta Honey And Chorizo"
       },
       "Apples": {
         "price": 0.5,
