@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "1/6/2026, 8:23:05 AM",
+  "lastUpdated": "1/7/2026, 8:19:38 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.65,
-        "name": "Morrisons British Semi Skimmed Milk 4 Pint"
+        "price": 1.37,
+        "name": "Morrisons The Best Extra Thick Brandy Cream With St Remy"
       },
       "Bread": {
         "price": 0.74,
