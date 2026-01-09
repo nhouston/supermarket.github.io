@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "1/8/2026, 8:25:59 AM",
+  "lastUpdated": "1/9/2026, 8:25:58 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -10,8 +10,8 @@
         "name": "Morrisons The Best Extra Thick Brandy Cream With St Remy"
       },
       "Bread": {
-        "price": 1,
-        "name": "Hovis Farmhouse Soft White Bread"
+        "price": 1.25,
+        "name": "Morrisons The Best Part Baked Sourdough Stonebaked Baguettes"
       },
       "Eggs": {
         "price": 1.75,
@@ -22,8 +22,8 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 0.8,
-        "name": "Laila Basmati Rice 250g"
+        "price": 0.65,
+        "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
         "price": 0.69,
@@ -38,7 +38,7 @@
         "name": "Morrisons Miniature Potatoes"
       },
       "Cheese": {
-        "price": 2.55,
+        "price": 1.82,
         "name": "Morrisons The Best Baking Feta Honey And Chorizo"
       },
       "Apples": {
