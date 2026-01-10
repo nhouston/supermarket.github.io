@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "1/9/2026, 8:25:58 AM",
+  "lastUpdated": "1/10/2026, 8:17:14 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.37,
-        "name": "Morrisons The Best Extra Thick Brandy Cream With St Remy"
+        "price": 1.62,
+        "name": "Morrisons The Best Extra Thick Cinnamon Toffee Cream 250ml"
       },
       "Bread": {
         "price": 1.25,
@@ -38,8 +38,8 @@
         "name": "Morrisons Miniature Potatoes"
       },
       "Cheese": {
-        "price": 1.82,
-        "name": "Morrisons The Best Baking Feta Honey And Chorizo"
+        "price": 2.5,
+        "name": "Morrisons Festive Cheese Selection"
       },
       "Apples": {
         "price": 0.5,
