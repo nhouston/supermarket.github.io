@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "1/12/2026, 8:16:53 AM",
+  "lastUpdated": "1/13/2026, 8:20:19 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
-        "price": 0.69,
-        "name": "Morrisons Penne"
+        "price": 0.75,
+        "name": "Morrisons Fusilli"
       },
       "Chicken Breast": {
         "price": 2.48,
@@ -38,8 +38,8 @@
         "name": "Morrisons Miniature Potatoes"
       },
       "Cheese": {
-        "price": 2.5,
-        "name": "Morrisons Festive Cheese Selection"
+        "price": 1.9,
+        "name": "Old El Paso Original Smoky BBQ Sizzling Fajita Dinner Kit"
       },
       "Apples": {
         "price": 0.5,
