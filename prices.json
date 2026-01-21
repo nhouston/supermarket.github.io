@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "1/20/2026, 8:22:21 AM",
+  "lastUpdated": "1/21/2026, 8:20:01 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
-        "price": 0.69,
-        "name": "Morrisons Penne"
+        "price": 1,
+        "name": "Barilla Pasta Tortiglioni   500g"
       },
       "Chicken Breast": {
         "price": 2.48,
