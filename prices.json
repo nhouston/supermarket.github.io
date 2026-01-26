@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "1/25/2026, 8:19:41 AM",
+  "lastUpdated": "1/26/2026, 8:22:40 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -10,8 +10,8 @@
         "name": "Morrisons British Whole Milk 2 Pint"
       },
       "Bread": {
-        "price": 1,
-        "name": "Hovis Best Of Both Medium"
+        "price": 0.74,
+        "name": "Morrisons White Medium Sliced Bread 800g"
       },
       "Eggs": {
         "price": 1.75,
@@ -22,8 +22,8 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 0.65,
-        "name": "Morrisons Microwave Rice Basmati 250g"
+        "price": 1,
+        "name": "Bens Original Savoury Chicken Microwave Rice"
       },
       "Pasta": {
         "price": 1,
@@ -38,8 +38,8 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1.35,
-        "name": "Philadelphia Original Soft Cream Cheese 165g"
+        "price": 1.5,
+        "name": "Morrisons 50% Reduced Fat Soft Cheese 200g"
       },
       "Apples": {
         "price": 0.5,
