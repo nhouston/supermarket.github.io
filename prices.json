@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "1/26/2026, 8:22:40 AM",
+  "lastUpdated": "1/27/2026, 8:20:11 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Bens Original Savoury Chicken Microwave Rice"
       },
       "Pasta": {
-        "price": 1,
-        "name": "Barilla Pasta Tortiglioni   500g"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.48,
