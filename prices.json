@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "1/28/2026, 8:22:48 AM",
+  "lastUpdated": "1/29/2026, 8:41:48 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,12 +38,12 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 2.5,
-        "name": "Boursin Portions Garlic & Herbs Soft French Cream Cheese"
+        "price": 1.95,
+        "name": "The Laughing Cow 8 Original Cheese Spread Triangles 120g"
       },
       "Apples": {
-        "price": 0.5,
-        "name": "Morrisons Market Street Loose Granny Smith Apples"
+        "price": 1,
+        "name": "Morrisons Disney Apples"
       }
     }
   }
