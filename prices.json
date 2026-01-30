@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "1/29/2026, 8:41:48 AM",
+  "lastUpdated": "1/30/2026, 8:40:42 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -23,7 +23,7 @@
       },
       "Rice": {
         "price": 1,
-        "name": "Bens Original Savoury Chicken Microwave Rice"
+        "name": "Bens Original Egg Fried Microwave Rice"
       },
       "Pasta": {
         "price": 0.69,
@@ -38,8 +38,8 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1.95,
-        "name": "The Laughing Cow 8 Original Cheese Spread Triangles 120g"
+        "price": 2.75,
+        "name": "Morrisons Grated Four Cheese Mix 200g"
       },
       "Apples": {
         "price": 1,
