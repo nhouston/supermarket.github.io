@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2/5/2026, 8:48:37 AM",
+  "lastUpdated": "2/6/2026, 8:45:02 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -22,8 +22,8 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 1,
-        "name": "Bens Original Savoury Chicken Microwave Rice"
+        "price": 0.65,
+        "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
         "price": 0.69,
@@ -38,8 +38,8 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1.25,
-        "name": "The Laughing Cow 8 Original Cheese Spread Triangles 120g"
+        "price": 2.75,
+        "name": "Morrisons Grated Four Cheese Mix 200g"
       },
       "Apples": {
         "price": 1,
