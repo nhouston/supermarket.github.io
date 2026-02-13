@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2/12/2026, 8:51:40 AM",
+  "lastUpdated": "2/13/2026, 8:49:39 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.65,
-        "name": "Morrisons British Semi Skimmed Milk 4 Pint"
+        "price": 1.2,
+        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
       },
       "Bread": {
         "price": 0.74,
