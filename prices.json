@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2/13/2026, 8:49:39 AM",
+  "lastUpdated": "2/14/2026, 8:34:27 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
-        "price": 0.69,
-        "name": "Morrisons Penne"
+        "price": 0.65,
+        "name": "Morrisons Quick Cook Fusilli"
       },
       "Chicken Breast": {
         "price": 1.85,
@@ -38,8 +38,8 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 2,
-        "name": "Pilgrims Choice Sliced Extra Mature Cheddar"
+        "price": 1.5,
+        "name": "Lindahls Protein Gouda Cheese Slices 125g"
       },
       "Apples": {
         "price": 1,
