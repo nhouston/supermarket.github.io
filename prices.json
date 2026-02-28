@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2/27/2026, 8:48:06 AM",
+  "lastUpdated": "2/28/2026, 8:26:59 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -31,15 +31,15 @@
       },
       "Chicken Breast": {
         "price": 1.85,
-        "name": "Sharwood's Indian Butter Chicken Curry Sauce Meal Kit 280g"
+        "name": "Sharwood's Indian Tikka Masala Curry Sauce Meal Kit 280g"
       },
       "Potatoes": {
         "price": 1.85,
         "name": "Morrisons Baking Potatoes  2kg"
       },
       "Cheese": {
-        "price": 2.35,
-        "name": "Leerdammer Original Cheese 8 Slices"
+        "price": 2.75,
+        "name": "Morrisons Grated Four Cheese Mix 200g"
       },
       "Apples": {
         "price": 1,
