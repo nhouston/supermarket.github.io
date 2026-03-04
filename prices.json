@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "3/1/2026, 8:36:27 AM",
+  "lastUpdated": "3/4/2026, 8:42:18 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,12 +38,12 @@
         "name": "Morrisons Baking Potatoes  2kg"
       },
       "Cheese": {
-        "price": 2.75,
-        "name": "Morrisons Grated Four Cheese Mix 200g"
+        "price": 1.95,
+        "name": "The Laughing Cow 8 Original Cheese Spread Triangles 120g"
       },
       "Apples": {
-        "price": 1,
-        "name": "Morrisons Disney Apples"
+        "price": 0.99,
+        "name": "Morrisons Small Apples"
       }
     }
   }
