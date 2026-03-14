@@ -1,21 +1,21 @@
 {
-  "lastUpdated": "3/8/2026, 8:39:35 AM",
+  "lastUpdated": "3/14/2026, 8:41:16 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.2,
-        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
+        "price": 0.8,
+        "name": "Nutmeg Home Essentials 1 Litre Plastic Measuring Jug"
       },
       "Bread": {
         "price": 0.74,
         "name": "Morrisons White Medium Sliced Bread 800g"
       },
       "Eggs": {
-        "price": 1.75,
-        "name": "Morrisons Medium Free Range Eggs   6 Pack"
+        "price": 1.25,
+        "name": "Nutmeg Home Essentials Plastic Mixing Bowl"
       },
       "Bananas": {
         "price": 0.78,
@@ -26,20 +26,20 @@
         "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
-        "price": 0.69,
-        "name": "Morrisons Penne"
+        "price": 0.75,
+        "name": "Morrisons Fusilli"
       },
       "Chicken Breast": {
-        "price": 1.85,
-        "name": "Sharwood's Indian Butter Chicken Curry Sauce Meal Kit 280g"
+        "price": 2.5,
+        "name": "Morrisons Whole Chicken Medium 1.45kg"
       },
       "Potatoes": {
-        "price": 1.85,
-        "name": "Morrisons Baking Potatoes  2kg"
+        "price": 1.5,
+        "name": "Nutmeg Home 32cm Essentials  Oven Tray"
       },
       "Cheese": {
-        "price": 2.75,
-        "name": "Morrisons Grated Four Cheese Mix 200g"
+        "price": 1.95,
+        "name": "The Laughing Cow 8 Original Cheese Spread Triangles 120g"
       },
       "Apples": {
         "price": 0.99,
