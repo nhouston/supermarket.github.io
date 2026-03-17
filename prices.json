@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "3/14/2026, 8:41:16 AM",
+  "lastUpdated": "3/17/2026, 9:02:56 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -18,28 +18,28 @@
         "name": "Nutmeg Home Essentials Plastic Mixing Bowl"
       },
       "Bananas": {
-        "price": 0.78,
-        "name": "Fyffes Bananas 5 Pack"
+        "price": 0.19,
+        "name": "Fyffes Loose Bananas"
       },
       "Rice": {
         "price": 0.65,
         "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
-        "price": 0.75,
-        "name": "Morrisons Fusilli"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
-        "price": 2.5,
-        "name": "Morrisons Whole Chicken Medium 1.45kg"
+        "price": 2.95,
+        "name": "Morrisons Market Street British Chicken Drumstick Fillets 600g"
       },
       "Potatoes": {
         "price": 1.5,
         "name": "Nutmeg Home 32cm Essentials  Oven Tray"
       },
       "Cheese": {
-        "price": 1.95,
-        "name": "The Laughing Cow 8 Original Cheese Spread Triangles 120g"
+        "price": 2.35,
+        "name": "Leerdammer Original Cheese 8 Slices"
       },
       "Apples": {
         "price": 0.99,
