@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "3/18/2026, 8:53:57 AM",
+  "lastUpdated": "3/27/2026, 8:53:52 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 0.8,
-        "name": "Nutmeg Home Essentials 1 Litre Plastic Measuring Jug"
+        "price": 1.2,
+        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
       },
       "Bread": {
         "price": 0.74,
@@ -22,7 +22,7 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 0.65,
+        "price": 0.6,
         "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
@@ -30,16 +30,16 @@
         "name": "Morrisons Penne"
       },
       "Chicken Breast": {
-        "price": 2.41,
-        "name": "Morrisons British Chicken Breast Fillets 330g"
+        "price": 2.95,
+        "name": "Morrisons Market Street British Chicken Drumstick Fillets 600g"
       },
       "Potatoes": {
-        "price": 1.5,
-        "name": "Nutmeg Home 32cm Essentials  Oven Tray"
+        "price": 1.85,
+        "name": "Morrisons Baking Potatoes  2kg"
       },
       "Cheese": {
-        "price": 2.35,
-        "name": "Leerdammer Original Cheese 8 Slices"
+        "price": 1.95,
+        "name": "Boursin Portions Garlic & Herbs Soft French Cream Cheese"
       },
       "Apples": {
         "price": 0.99,
