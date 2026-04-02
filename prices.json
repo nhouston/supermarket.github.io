@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "3/27/2026, 8:53:52 AM",
+  "lastUpdated": "4/2/2026, 8:59:21 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -22,8 +22,8 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 0.6,
-        "name": "Morrisons Microwave Rice Basmati 250g"
+        "price": 1,
+        "name": "Tilda Pots Butter And Sea Salt Jasmine Rice 2 x 125g"
       },
       "Pasta": {
         "price": 0.69,
@@ -34,16 +34,16 @@
         "name": "Morrisons Market Street British Chicken Drumstick Fillets 600g"
       },
       "Potatoes": {
-        "price": 1.85,
-        "name": "Morrisons Baking Potatoes  2kg"
+        "price": 1,
+        "name": "Morrisons The Best British All Rounder Potatoes   2kg"
       },
       "Cheese": {
-        "price": 1.95,
-        "name": "Boursin Portions Garlic & Herbs Soft French Cream Cheese"
+        "price": 2.49,
+        "name": "Morrisons Savers Mature White Cheddar  400g"
       },
       "Apples": {
-        "price": 0.99,
-        "name": "Morrisons Small Apples"
+        "price": 1,
+        "name": "Morrisons Disney Apples"
       }
     }
   }
