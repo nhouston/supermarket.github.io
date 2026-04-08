@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "4/2/2026, 8:59:21 AM",
+  "lastUpdated": "4/8/2026, 9:06:05 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -18,32 +18,32 @@
         "name": "Nutmeg Home Essentials Plastic Mixing Bowl"
       },
       "Bananas": {
-        "price": 0.19,
+        "price": 0.17,
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 1,
-        "name": "Tilda Pots Butter And Sea Salt Jasmine Rice 2 x 125g"
+        "price": 1.2,
+        "name": "Veetee Tear & Share Sticky Rice"
       },
       "Pasta": {
         "price": 0.69,
         "name": "Morrisons Penne"
       },
       "Chicken Breast": {
-        "price": 2.95,
-        "name": "Morrisons Market Street British Chicken Drumstick Fillets 600g"
+        "price": 3.95,
+        "name": "Morrisons British Chicken Diced Breast Fillets 400g"
       },
       "Potatoes": {
-        "price": 1,
-        "name": "Morrisons The Best British All Rounder Potatoes   2kg"
+        "price": 1.09,
+        "name": "Morrisons Baby Potatoes   1kg"
       },
       "Cheese": {
-        "price": 2.49,
-        "name": "Morrisons Savers Mature White Cheddar  400g"
+        "price": 1.95,
+        "name": "Boursin Portions Garlic & Herbs Soft French Cream Cheese"
       },
       "Apples": {
-        "price": 1,
-        "name": "Morrisons Disney Apples"
+        "price": 0.5,
+        "name": "Morrisons Market Street Loose Granny Smith Apples"
       }
     }
   }
