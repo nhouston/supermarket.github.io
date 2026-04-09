@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "4/8/2026, 9:06:05 AM",
+  "lastUpdated": "4/9/2026, 9:14:18 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,12 +38,12 @@
         "name": "Morrisons Baby Potatoes   1kg"
       },
       "Cheese": {
-        "price": 1.95,
-        "name": "Boursin Portions Garlic & Herbs Soft French Cream Cheese"
+        "price": 1.85,
+        "name": "All Things Cottage Cheese Natural"
       },
       "Apples": {
-        "price": 0.5,
-        "name": "Morrisons Market Street Loose Granny Smith Apples"
+        "price": 1,
+        "name": "Morrisons Disney Apples"
       }
     }
   }
