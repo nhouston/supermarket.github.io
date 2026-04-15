@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "4/14/2026, 9:24:45 AM",
+  "lastUpdated": "4/15/2026, 9:25:02 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -30,8 +30,8 @@
         "name": "Morrisons Penne"
       },
       "Chicken Breast": {
-        "price": 4,
-        "name": "Nutmeg Home Rectangular Silicone Air Fryer Liner"
+        "price": 2.41,
+        "name": "Morrisons British Chicken Breast Fillets 330g"
       },
       "Potatoes": {
         "price": 0.79,
@@ -39,7 +39,7 @@
       },
       "Cheese": {
         "price": 1.6,
-        "name": "All Things Cottage Cheese Natural"
+        "name": "All Things Cottage Cheese Low Fat"
       },
       "Apples": {
         "price": 1,
