@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "4/25/2026, 8:55:24 AM",
+  "lastUpdated": "4/29/2026, 10:12:10 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -14,20 +14,20 @@
         "name": "Morrisons White Medium Sliced Bread 800g"
       },
       "Eggs": {
-        "price": 1.25,
-        "name": "Nutmeg Home Essentials Plastic Mixing Bowl"
+        "price": 1.75,
+        "name": "Morrisons Medium Free Range Eggs   6 Pack"
       },
       "Bananas": {
-        "price": 0.78,
-        "name": "Fyffes Bananas 5 Pack"
+        "price": 0.17,
+        "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 0.8,
-        "name": "Laila Basmati Rice 250g"
+        "price": 1.2,
+        "name": "Veetee Tear & Share Sticky Rice"
       },
       "Pasta": {
-        "price": 0.69,
-        "name": "Morrisons Penne"
+        "price": 0.75,
+        "name": "Morrisons Fusilli"
       },
       "Chicken Breast": {
         "price": 2.41,
@@ -38,12 +38,12 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 2.49,
-        "name": "Morrisons Savers Mature White Cheddar  400g"
+        "price": 2,
+        "name": "Arla LactoFREE Mature Cheddar Cheese"
       },
       "Apples": {
-        "price": 1,
-        "name": "Morrisons Disney Apples 6 Pack"
+        "price": 0.99,
+        "name": "Morrisons Small Apples 6 Pack"
       }
     }
   }
