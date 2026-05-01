@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "4/29/2026, 10:12:10 AM",
+  "lastUpdated": "5/1/2026, 9:42:20 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -18,8 +18,8 @@
         "name": "Morrisons Medium Free Range Eggs   6 Pack"
       },
       "Bananas": {
-        "price": 0.17,
-        "name": "Fyffes Loose Bananas"
+        "price": 0.78,
+        "name": "Fyffes Bananas 5 Pack"
       },
       "Rice": {
         "price": 1.2,
@@ -38,8 +38,8 @@
         "name": "Morrisons Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 2,
-        "name": "Arla LactoFREE Mature Cheddar Cheese"
+        "price": 1,
+        "name": "Dairylea Dunkers Jumbo Tubes Cheese Snack 3 x 41g"
       },
       "Apples": {
         "price": 0.99,
