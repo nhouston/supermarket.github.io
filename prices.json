@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "5/1/2026, 9:42:20 AM",
+  "lastUpdated": "5/4/2026, 10:20:14 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -35,11 +35,11 @@
       },
       "Potatoes": {
         "price": 0.79,
-        "name": "Morrisons Baking Potatoes  4 Pack"
+        "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1,
-        "name": "Dairylea Dunkers Jumbo Tubes Cheese Snack 3 x 41g"
+        "price": 1.85,
+        "name": "Lindahls Protein Quark Cheese 500g"
       },
       "Apples": {
         "price": 0.99,
