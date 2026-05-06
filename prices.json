@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "5/4/2026, 10:20:14 AM",
+  "lastUpdated": "5/6/2026, 10:23:53 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -14,7 +14,7 @@
         "name": "Morrisons White Medium Sliced Bread 800g"
       },
       "Eggs": {
-        "price": 1.75,
+        "price": 1.8,
         "name": "Morrisons Medium Free Range Eggs   6 Pack"
       },
       "Bananas": {
@@ -22,12 +22,12 @@
         "name": "Fyffes Bananas 5 Pack"
       },
       "Rice": {
-        "price": 1.2,
-        "name": "Veetee Tear & Share Sticky Rice"
+        "price": 1,
+        "name": "Bens Original Golden Vegetable Microwave Rice"
       },
       "Pasta": {
-        "price": 0.75,
-        "name": "Morrisons Fusilli"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.41,
@@ -38,12 +38,12 @@
         "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1.85,
-        "name": "Lindahls Protein Quark Cheese 500g"
+        "price": 1,
+        "name": "Dairylea Lunchers Ham 'N' Cheese Snack"
       },
       "Apples": {
-        "price": 0.99,
-        "name": "Morrisons Small Apples 6 Pack"
+        "price": 1.2,
+        "name": "Highland Spring Apple & Blackcurrant Still Flavoured Water"
       }
     }
   }
