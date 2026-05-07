@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "5/6/2026, 10:23:53 AM",
+  "lastUpdated": "5/7/2026, 10:29:06 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,8 +38,8 @@
         "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1,
-        "name": "Dairylea Lunchers Ham 'N' Cheese Snack"
+        "price": 1.85,
+        "name": "Lindahls Protein Quark Cheese 500g"
       },
       "Apples": {
         "price": 1.2,
