@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "5/13/2026, 10:29:40 AM",
+  "lastUpdated": "5/14/2026, 10:20:06 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -42,8 +42,8 @@
         "name": "Lindahls Protein Quark Cheese 500g"
       },
       "Apples": {
-        "price": 1.2,
-        "name": "Highland Spring Apple & Blackcurrant Still Flavoured Water"
+        "price": 0.99,
+        "name": "Morrisons Small Apples 6 Pack"
       }
     }
   }
