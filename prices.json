@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "5/25/2026, 11:57:38 AM",
+  "lastUpdated": "5/28/2026, 11:43:35 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -22,12 +22,12 @@
         "name": "Fyffes Bananas 5 Pack"
       },
       "Rice": {
-        "price": 0.75,
-        "name": "Morrisons Chilli & Lime Rice"
+        "price": 1.2,
+        "name": "Veetee Tear & Share Sticky Rice"
       },
       "Pasta": {
-        "price": 0.69,
-        "name": "Morrisons Penne"
+        "price": 0.75,
+        "name": "Morrisons Fusilli"
       },
       "Chicken Breast": {
         "price": 2.41,
@@ -38,8 +38,8 @@
         "name": "Morrisons British Baby Potatoes   1kg"
       },
       "Cheese": {
-        "price": 1.85,
-        "name": "Lindahls Protein Quark Cheese 500g"
+        "price": 1,
+        "name": "Dairylea Lunchers Chicken & Cheese"
       },
       "Apples": {
         "price": 0.99,
