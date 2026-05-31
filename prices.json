@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "5/29/2026, 11:18:04 AM",
+  "lastUpdated": "5/31/2026, 10:21:41 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -18,16 +18,16 @@
         "name": "Market Street 2 Egg Custard Tarts"
       },
       "Bananas": {
-        "price": 0.78,
-        "name": "Fyffes Bananas 5 Pack"
+        "price": 0.18,
+        "name": "Fyffes Loose Bananas"
       },
       "Rice": {
         "price": 1.2,
         "name": "Veetee Tear & Share Sticky Rice"
       },
       "Pasta": {
-        "price": 0.75,
-        "name": "Morrisons Fusilli"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.41,
