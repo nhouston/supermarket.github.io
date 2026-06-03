@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "6/2/2026, 12:13:28 PM",
+  "lastUpdated": "6/3/2026, 12:43:48 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -34,12 +34,12 @@
         "name": "Morrisons British Chicken Breast Fillets 330g"
       },
       "Potatoes": {
-        "price": 1.05,
-        "name": "Morrisons British Baby Potatoes   1kg"
+        "price": 0.87,
+        "name": "Morrisons Miniature Potatoes 500g"
       },
       "Cheese": {
-        "price": 2,
-        "name": "Boursin Garlic & Herbs Soft Cream Cheese 150g"
+        "price": 1.59,
+        "name": "Dairylea Lunchers Chicken & Cheese"
       },
       "Apples": {
         "price": 0.99,
