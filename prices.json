@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "6/4/2026, 11:10:13 AM",
+  "lastUpdated": "6/7/2026, 10:35:30 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Veetee Tear & Share Sticky Rice"
       },
       "Pasta": {
-        "price": 0.75,
-        "name": "Morrisons Fusilli"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.41,
@@ -38,8 +38,8 @@
         "name": "Morrisons Miniature Potatoes 500g"
       },
       "Cheese": {
-        "price": 2,
-        "name": "Boursin Garlic & Herbs Soft Cream Cheese 150g"
+        "price": 1.85,
+        "name": "Mcintosh Of Strathmore Summer Sides Jalapeno Mac 'N' Cheese 250G"
       },
       "Apples": {
         "price": 0.99,
