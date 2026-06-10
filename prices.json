@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "6/8/2026, 12:35:56 PM",
+  "lastUpdated": "6/10/2026, 11:46:00 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 0.75,
-        "name": "Yazoo Banana Flavoured Milk Drink"
+        "price": 1.2,
+        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
       },
       "Bread": {
         "price": 0.74,
@@ -18,8 +18,8 @@
         "name": "Market Street 2 Egg Custard Tarts"
       },
       "Bananas": {
-        "price": 0.75,
-        "name": "Yazoo Banana Flavoured Milk Drink"
+        "price": 0.78,
+        "name": "Fyffes Bananas 5 Pack"
       },
       "Rice": {
         "price": 1.2,
@@ -34,12 +34,12 @@
         "name": "Morrisons British Chicken Breast Fillets 330g"
       },
       "Potatoes": {
-        "price": 0.87,
-        "name": "Morrisons Miniature Potatoes 500g"
+        "price": 1.05,
+        "name": "Morrisons British Baby Potatoes   1kg"
       },
       "Cheese": {
-        "price": 1.85,
-        "name": "Mcintosh Of Strathmore Summer Sides Jalapeno Mac 'N' Cheese 250G"
+        "price": 1.59,
+        "name": "Dairylea Lunchers Ham 'N' Cheese Snack"
       },
       "Apples": {
         "price": 0.99,
