@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "6/10/2026, 11:46:00 AM",
+  "lastUpdated": "6/15/2026, 2:00:15 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Veetee Tear & Share Sticky Rice"
       },
       "Pasta": {
-        "price": 0.75,
-        "name": "Morrisons Fusilli"
+        "price": 1,
+        "name": "Barilla Pasta Fusilli  500g"
       },
       "Chicken Breast": {
         "price": 2.41,
@@ -38,8 +38,8 @@
         "name": "Morrisons British Baby Potatoes   1kg"
       },
       "Cheese": {
-        "price": 1.59,
-        "name": "Dairylea Lunchers Ham 'N' Cheese Snack"
+        "price": 1,
+        "name": "Dairylea Snackers Fruits 64g"
       },
       "Apples": {
         "price": 0.99,
