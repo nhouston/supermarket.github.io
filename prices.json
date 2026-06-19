@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "6/18/2026, 12:03:52 PM",
+  "lastUpdated": "6/19/2026, 12:15:34 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -14,8 +14,8 @@
         "name": "Morrisons White Medium Sliced Bread 800g"
       },
       "Eggs": {
-        "price": 1,
-        "name": "Market Street 2 Egg Custard Tarts"
+        "price": 1.8,
+        "name": "Morrisons Medium Free Range Eggs   6 Pack"
       },
       "Bananas": {
         "price": 0.78,
