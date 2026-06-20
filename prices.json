@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "6/19/2026, 12:15:34 PM",
+  "lastUpdated": "6/20/2026, 10:41:35 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -18,8 +18,8 @@
         "name": "Morrisons Medium Free Range Eggs   6 Pack"
       },
       "Bananas": {
-        "price": 0.78,
-        "name": "Fyffes Bananas 5 Pack"
+        "price": 0.18,
+        "name": "Fyffes Loose Bananas"
       },
       "Rice": {
         "price": 1,
@@ -34,8 +34,8 @@
         "name": "Morrisons British Chicken Breast Fillets 330g"
       },
       "Potatoes": {
-        "price": 1.05,
-        "name": "Morrisons British Baby Potatoes   1kg"
+        "price": 0.87,
+        "name": "Morrisons Miniature Potatoes 500g"
       },
       "Cheese": {
         "price": 1.3,
