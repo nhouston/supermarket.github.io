@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "6/21/2026, 11:14:59 AM",
+  "lastUpdated": "6/23/2026, 11:12:23 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Tilda Microwave Pure Basmati Rice 250g"
       },
       "Pasta": {
-        "price": 1,
-        "name": "Barilla Pasta Fusilli  500g"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.41,
