@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "6/25/2026, 10:48:51 AM",
+  "lastUpdated": "6/26/2026, 10:58:08 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,8 +38,8 @@
         "name": "Morrisons Miniature Potatoes 500g"
       },
       "Cheese": {
-        "price": 1,
-        "name": "Dairylea Lunchers Ham 'N' Cheese Snack"
+        "price": 1.3,
+        "name": "Morrisons Mozzarella"
       },
       "Apples": {
         "price": 0.99,
