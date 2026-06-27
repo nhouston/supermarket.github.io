@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "6/26/2026, 10:58:08 AM",
+  "lastUpdated": "6/27/2026, 10:11:29 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -10,8 +10,8 @@
         "name": "Morrisons British Single Cream"
       },
       "Bread": {
-        "price": 0.74,
-        "name": "Morrisons White Medium Sliced Bread 800g"
+        "price": 1,
+        "name": "Hovis Farmhouse Soft White Bread"
       },
       "Eggs": {
         "price": 1.8,
@@ -30,12 +30,12 @@
         "name": "Barilla Pasta Fusilli  500g"
       },
       "Chicken Breast": {
-        "price": 2.41,
+        "price": 2.6,
         "name": "Morrisons British Chicken Breast Fillets 330g"
       },
       "Potatoes": {
-        "price": 0.87,
-        "name": "Morrisons Miniature Potatoes 500g"
+        "price": 1.65,
+        "name": "Morrisons The Best Baking Potatoes 700g"
       },
       "Cheese": {
         "price": 1.3,
