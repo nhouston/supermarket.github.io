@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "7/4/2026, 10:14:44 AM",
+  "lastUpdated": "7/6/2026, 12:08:52 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -10,8 +10,8 @@
         "name": "Morrisons British Single Cream"
       },
       "Bread": {
-        "price": 1,
-        "name": "Hovis Farmhouse Soft White Bread"
+        "price": 0.74,
+        "name": "Morrisons White Medium Sliced Bread 800g"
       },
       "Eggs": {
         "price": 1.8,
