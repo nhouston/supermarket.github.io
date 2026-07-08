@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "7/6/2026, 12:08:52 PM",
+  "lastUpdated": "7/8/2026, 10:20:14 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -42,8 +42,8 @@
         "name": "Morrisons Mozzarella"
       },
       "Apples": {
-        "price": 0.99,
-        "name": "Morrisons Small Apples 6 Pack"
+        "price": 1.25,
+        "name": "Highland Spring Apple & Blackcurrant Still Flavoured Water"
       }
     }
   }
