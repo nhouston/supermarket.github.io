@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "7/8/2026, 10:20:14 AM",
+  "lastUpdated": "7/11/2026, 9:30:26 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,16 +26,16 @@
         "name": "Tilda Microwave Pure Basmati Rice 250g"
       },
       "Pasta": {
-        "price": 0.75,
-        "name": "Morrisons Fusilli"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 2.52,
         "name": "Morrisons British Chicken Breast Fillets 330g"
       },
       "Potatoes": {
-        "price": 1.65,
-        "name": "Morrisons The Best Baking Potatoes 700g"
+        "price": 0.87,
+        "name": "Morrisons Miniature Potatoes 500g"
       },
       "Cheese": {
         "price": 1.3,
