@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "8/11/2026, 9:00:15 AM",
+  "lastUpdated": "8/12/2026, 9:10:55 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -22,16 +22,16 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 0.55,
-        "name": "Morrisons Microwave Rice Basmati 250g"
+        "price": 1,
+        "name": "Bens Original Golden Vegetable Microwave Rice"
       },
       "Pasta": {
-        "price": 1.5,
-        "name": "Heinz Marry Me Pasta Sauce 350G"
+        "price": 1,
+        "name": "Barilla Pasta Tortiglioni   500g"
       },
       "Chicken Breast": {
-        "price": 2.52,
-        "name": "Morrisons British Chicken Breast Fillets 330g"
+        "price": 1,
+        "name": "Morrisons British Chicken Drumsticks 500g"
       },
       "Potatoes": {
         "price": 1,
