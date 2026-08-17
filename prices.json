@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "8/16/2026, 8:31:24 AM",
+  "lastUpdated": "8/17/2026, 8:45:40 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -18,7 +18,7 @@
         "name": "Morrisons Medium Free Range Eggs   6 Pack"
       },
       "Bananas": {
-        "price": 0.18,
+        "price": 0.17,
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
@@ -34,12 +34,12 @@
         "name": "Morrisons British Chicken Drumsticks 500g"
       },
       "Potatoes": {
-        "price": 1,
+        "price": 1.3,
         "name": "Morrisons The Best Seasonal New Potatoes 750g"
       },
       "Cheese": {
-        "price": 2.5,
-        "name": "Morrisons The Best Mozzarella Di Bufala Campana PDO"
+        "price": 2,
+        "name": "Boursin Garlic & Herbs Soft Cream Cheese 150g"
       },
       "Apples": {
         "price": 0.99,
