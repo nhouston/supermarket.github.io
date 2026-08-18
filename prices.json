@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "8/17/2026, 8:45:40 AM",
+  "lastUpdated": "8/18/2026, 8:36:51 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Tilda Microwave Caribbean Rice and Peas Basmati"
       },
       "Pasta": {
-        "price": 1,
-        "name": "Barilla Pasta Tortiglioni   500g"
+        "price": 1.75,
+        "name": "McIntosh Of Strathmore Macaroni Cheese"
       },
       "Chicken Breast": {
         "price": 1,
@@ -38,8 +38,8 @@
         "name": "Morrisons The Best Seasonal New Potatoes 750g"
       },
       "Cheese": {
-        "price": 2,
-        "name": "Boursin Garlic & Herbs Soft Cream Cheese 150g"
+        "price": 2.25,
+        "name": "Dairylea Dunkers Jumbo Tubes Cheese Snack 3 x 41g"
       },
       "Apples": {
         "price": 0.99,
