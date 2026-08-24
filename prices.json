@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "8/22/2026, 8:33:25 AM",
+  "lastUpdated": "8/24/2026, 8:49:27 AM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.2,
-        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
+        "price": 1.29,
+        "name": "Morrisons For Farmers British Semi Skimmed Milk 2 Pint"
       },
       "Bread": {
         "price": 0.74,
@@ -22,8 +22,8 @@
         "name": "Fyffes Loose Bananas"
       },
       "Rice": {
-        "price": 1.25,
-        "name": "Tilda Microwave Egg Fried Rice"
+        "price": 0.55,
+        "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
         "price": 2,
@@ -34,16 +34,16 @@
         "name": "Morrisons British Chicken Drumsticks 500g"
       },
       "Potatoes": {
-        "price": 1.05,
-        "name": "Morrisons British Baby Potatoes   1kg"
+        "price": 0.79,
+        "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
         "price": 1.5,
         "name": "Dairylea Dunkers Jumbo Tubes Cheese Snack 3 x 41g"
       },
       "Apples": {
-        "price": 0.99,
-        "name": "Morrisons Small Apples 6 Pack"
+        "price": 0.45,
+        "name": "Morrisons Market Street Loose Granny Smith Apples"
       }
     }
   }
