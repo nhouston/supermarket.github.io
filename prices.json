@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "8/30/2026, 1:42:36 PM",
+  "lastUpdated": "8/31/2026, 3:50:50 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.25,
-        "name": "Belvita Milk & Cereal Biscuit Snack Bars Multipack"
+        "price": 1.2,
+        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
       },
       "Bread": {
         "price": 0.74,
