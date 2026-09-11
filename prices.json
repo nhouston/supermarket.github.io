@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "9/10/2026, 12:46:02 PM",
+  "lastUpdated": "9/11/2026, 12:45:01 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,8 +38,8 @@
         "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1,
-        "name": "Dairylea Lunchers Chicken & Cheese"
+        "price": 1.75,
+        "name": "Mini Babybel Original Cheese Snacks"
       },
       "Apples": {
         "price": 1.8,
