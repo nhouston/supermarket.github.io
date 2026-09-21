@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "9/19/2026, 12:25:18 PM",
+  "lastUpdated": "9/21/2026, 2:54:22 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.2,
-        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
+        "price": 1,
+        "name": "Belvita Milk & Cereal Biscuit Snack Bars Multipack"
       },
       "Bread": {
         "price": 0.74,
@@ -34,12 +34,12 @@
         "name": "Morrisons British Chicken Drumsticks 500g"
       },
       "Potatoes": {
-        "price": 0.79,
-        "name": "Morrisons British Baking Potatoes  4 Pack"
+        "price": 0.99,
+        "name": "Morrisons British Baby Potatoes   1kg"
       },
       "Cheese": {
-        "price": 1,
-        "name": "Dairylea Lunchers Chicken & Cheese"
+        "price": 2.5,
+        "name": "Morrisons The Best Mozzarella Di Bufala Campana PDO"
       },
       "Apples": {
         "price": 1.8,
