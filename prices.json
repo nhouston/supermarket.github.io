@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "9/24/2026, 1:14:37 PM",
+  "lastUpdated": "9/25/2026, 1:19:48 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,8 +38,8 @@
         "name": "Morrisons British Baby Potatoes   1kg"
       },
       "Cheese": {
-        "price": 1,
-        "name": "Dairylea Lunchers Ham 'N' Cheese Snack"
+        "price": 1.85,
+        "name": "All Things Cottage Cheese Natural"
       },
       "Apples": {
         "price": 1.8,
