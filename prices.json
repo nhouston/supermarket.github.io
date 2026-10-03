@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "10/2/2026, 2:27:30 PM",
+  "lastUpdated": "10/3/2026, 1:03:49 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,8 +38,8 @@
         "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1,
-        "name": "Dairylea Snackers Cheese & Crackers with Strawberry Fruit Bites Snack 64g"
+        "price": 2.5,
+        "name": "Morrisons The Best Mozzarella Di Bufala Campana PDO"
       },
       "Apples": {
         "price": 0.45,
