@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "10/3/2026, 1:03:49 PM",
+  "lastUpdated": "10/5/2026, 4:42:51 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.2,
-        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
+        "price": 1,
+        "name": "Belvita Milk & Cereal Biscuit Snack Bars Multipack"
       },
       "Bread": {
         "price": 0.74,
@@ -38,12 +38,12 @@
         "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 2.5,
-        "name": "Morrisons The Best Mozzarella Di Bufala Campana PDO"
+        "price": 1,
+        "name": "Dairylea Lunchers Ham 'N' Cheese Snack"
       },
       "Apples": {
-        "price": 0.45,
-        "name": "Morrisons Market Street Loose Granny Smith Apples"
+        "price": 1.8,
+        "name": "Morrisons Royal Gala Apples 6 Pack"
       }
     }
   }
