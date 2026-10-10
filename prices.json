@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "10/5/2026, 4:42:51 PM",
+  "lastUpdated": "10/10/2026, 2:17:44 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1,
-        "name": "Belvita Milk & Cereal Biscuit Snack Bars Multipack"
+        "price": 1.2,
+        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
       },
       "Bread": {
         "price": 0.74,
@@ -39,7 +39,7 @@
       },
       "Cheese": {
         "price": 1,
-        "name": "Dairylea Lunchers Ham 'N' Cheese Snack"
+        "name": "Dairylea Lunchers Chicken & Cheese"
       },
       "Apples": {
         "price": 1.8,
