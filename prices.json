@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "10/11/2026, 2:45:15 PM",
+  "lastUpdated": "10/19/2026, 3:16:56 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -34,16 +34,16 @@
         "name": "Morrisons British Chicken Drumsticks 500g"
       },
       "Potatoes": {
-        "price": 0.79,
-        "name": "Morrisons British Baking Potatoes  4 Pack"
+        "price": 1.5,
+        "name": "Scotty Brand Ayrshire Baby Potatoes"
       },
       "Cheese": {
-        "price": 1,
-        "name": "Dairylea Lunchers Chicken & Cheese"
+        "price": 1.85,
+        "name": "All Things Cottage Cheese Natural"
       },
       "Apples": {
-        "price": 1.8,
-        "name": "Morrisons Royal Gala Apples 6 Pack"
+        "price": 0.45,
+        "name": "Morrisons Loose Braeburn Apples"
       }
     }
   }
