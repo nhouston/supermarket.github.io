@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "10/21/2026, 1:34:39 PM",
+  "lastUpdated": "10/23/2026, 1:10:11 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -26,8 +26,8 @@
         "name": "Morrisons Microwave Rice Basmati 250g"
       },
       "Pasta": {
-        "price": 2,
-        "name": "Heinz Pasta Sauce Tomato Grana Padano & Mascarpone 350g"
+        "price": 0.69,
+        "name": "Morrisons Penne"
       },
       "Chicken Breast": {
         "price": 1.5,
