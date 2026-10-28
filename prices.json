@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "10/27/2026, 1:59:29 PM",
+  "lastUpdated": "10/28/2026, 2:48:53 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -30,16 +30,16 @@
         "name": "Morrisons Penne"
       },
       "Chicken Breast": {
-        "price": 1.5,
-        "name": "Morrisons British Chicken Drumsticks 500g"
+        "price": 2.51,
+        "name": "Morrisons British Chicken Breast Fillets 330g"
       },
       "Potatoes": {
-        "price": 1.5,
-        "name": "Scotty Brand Ayrshire Baby Potatoes"
+        "price": 0.79,
+        "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 2.5,
-        "name": "Morrisons The Best Mozzarella Di Bufala Campana PDO"
+        "price": 2.44,
+        "name": "Morrisons British Savers Mild White Cheddar  400g"
       },
       "Apples": {
         "price": 0.45,
