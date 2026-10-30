@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "10/28/2026, 2:48:53 PM",
+  "lastUpdated": "10/30/2026, 2:55:04 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -42,8 +42,8 @@
         "name": "Morrisons British Savers Mild White Cheddar  400g"
       },
       "Apples": {
-        "price": 0.45,
-        "name": "Morrisons Loose Braeburn Apples"
+        "price": 0.5,
+        "name": "Morrisons Loose Russet Apple"
       }
     }
   }
