@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "11/18/2026, 5:08:21 PM",
+  "lastUpdated": "11/20/2026, 4:47:27 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
     "Aldi": {},
     "Morrisons": {
       "Milk": {
-        "price": 1.3,
-        "name": "Morrisons British Semi Skimmed Milk 2 Pint"
+        "price": 1.75,
+        "name": "Morrisons British Semi Skimmed Milk 4 Pint"
       },
       "Bread": {
         "price": 0.74,
@@ -38,8 +38,8 @@
         "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1.5,
-        "name": "Ginsters Smoked Ham And Cheddar Pastry Toastie 130g"
+        "price": 1.59,
+        "name": "Dairylea Snackers Cheese & Crackers with Strawberry Fruit Bites Snack 64g"
       },
       "Apples": {
         "price": 0.5,
