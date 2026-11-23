@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "11/22/2026, 4:08:30 PM",
+  "lastUpdated": "11/23/2026, 7:55:55 PM",
   "prices": {
     "Tesco": {},
     "Asda": {},
@@ -38,12 +38,12 @@
         "name": "Morrisons British Baking Potatoes  4 Pack"
       },
       "Cheese": {
-        "price": 1.59,
-        "name": "Dairylea Snackers Cheese & Crackers with Strawberry Fruit Bites Snack 64g"
+        "price": 1.5,
+        "name": "Ginsters Smoked Ham And Cheddar Pastry Toastie 130g"
       },
       "Apples": {
-        "price": 0.5,
-        "name": "Morrisons Loose Russet Apple"
+        "price": 0.99,
+        "name": "Morrisons Small Apples 6 Pack"
       }
     }
   }
